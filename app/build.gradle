@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
 
 android {
     compileSdkVersion rootProject.ext.androidCompileSdkVersion
@@ -28,8 +30,17 @@ dependencies {
     implementation appDependencies.kotlin
 
     implementation appDependencies.supportAppCompat
+//    implementation 'androidx.annotation:annotation:1.0.0-alpha1'
+
+    implementation appDependencies.dagger
+    implementation appDependencies.daggerAndroid
+    kapt appDependencies.daggerCompiler
+    kapt appDependencies.daggerAndroidCompiler
 
     implementation appDependencies.FirebaseMessaging
+
+    implementation appDependencies.glide
+    kapt appDependencies.glideCompiler
 
 
     //TODO move to dependencies.gradle

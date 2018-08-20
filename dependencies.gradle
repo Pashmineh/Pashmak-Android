@@ -10,7 +10,9 @@ ext {
     androidCompileSdkVersion = 28
 
     final supportVersion = '1.0.0-rc01'
+    final daggerVersion = '2.16'
     final firebaseVersion = '17.3.0'
+    final GlideVersion = '4.7.1'
 
 
 
@@ -22,8 +24,18 @@ ext {
             //Support
             supportAppCompat    : "androidx.appcompat:appcompat:$supportVersion",
 
+            //Dagger
+            dagger               : "com.google.dagger:dagger:$daggerVersion",
+            daggerCompiler       : "com.google.dagger:dagger-compiler:$daggerVersion",
+            daggerAndroid        : "com.google.dagger:dagger-android-support:$daggerVersion",
+            daggerAndroidCompiler: "com.google.dagger:dagger-android-processor:$daggerVersion",
+
             //Firebase
-            FirebaseMessaging   : "com.google.firebase:firebase-messaging:$firebaseVersion"
+            FirebaseMessaging   : "com.google.firebase:firebase-messaging:$firebaseVersion",
+
+            //GLIDE
+            glide                : "com.github.bumptech.glide:glide:$GlideVersion",
+            glideCompiler        : "com.github.bumptech.glide:compiler:$GlideVersion"
     ]
 
 }
