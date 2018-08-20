@@ -1,7 +1,7 @@
 package app.pashmak.com.pashmak.ui
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import app.pashmak.com.pashmak.R
 
 class SplashActivity: AppCompatActivity()
