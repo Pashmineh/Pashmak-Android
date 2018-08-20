@@ -1,0 +1,29 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+
+    final supportVersion = '1.0.0-rc01'
+    final firebaseVersion = '17.3.0'
+
+
+
+    dependencies = [
+
+            //Kotlin
+            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+
+            //Support
+            supportAppCompat    : "androidx.appcompat:appcompat:$supportVersion",
+
+            //Firebase
+            FirebaseMessaging   : "com.google.firebase:firebase-messaging:$firebaseVersion"
+    ]
+
+}

@@ -1,15 +1,13 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
     defaultConfig {
         applicationId "app.pashmak.com.pashmak"
-        minSdkVersion 19
-        targetSdkVersion 28
+        minSdkVersion rootProject.ext.androidMinSdkVersion
+        targetSdkVersion rootProject.ext.androidTargetSdkVersion
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -24,9 +22,17 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-rc01'
-    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+
+    def appDependencies  = rootProject.ext.dependencies
+
+    implementation appDependencies.kotlin
+
+    implementation appDependencies.supportAppCompat
+
+    implementation appDependencies.FirebaseMessaging
+
+
+    //TODO move to dependencies.gradle
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
