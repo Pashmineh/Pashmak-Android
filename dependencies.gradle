@@ -10,7 +10,11 @@ ext {
     androidCompileSdkVersion = 28
 
     final supportVersion = '1.0.0-rc01'
-    final daggerVersion = '2.16'
+    final rxJava = '2.2.0'
+    final rxAndroid = '2.1.0'
+    final daggerVersion = '2.15'
+    final retrofit = '2.4.0'
+    final okHttp = '3.11.0'
     final firebaseVersion = '17.3.0'
     final GlideVersion = '4.7.1'
 
@@ -24,11 +28,25 @@ ext {
             //Support
             supportAppCompat    : "androidx.appcompat:appcompat:$supportVersion",
 
+            //RXJava
+            rxJava               : "io.reactivex.rxjava2:rxjava:$rxJava",
+
+            //RXAndroid
+            rxAndroid            : "io.reactivex.rxjava2:rxandroid:$rxAndroid",
+
             //Dagger
             dagger               : "com.google.dagger:dagger:$daggerVersion",
             daggerCompiler       : "com.google.dagger:dagger-compiler:$daggerVersion",
             daggerAndroid        : "com.google.dagger:dagger-android-support:$daggerVersion",
             daggerAndroidCompiler: "com.google.dagger:dagger-android-processor:$daggerVersion",
+
+            //Retrofit
+            retrofit             : "com.squareup.retrofit2:retrofit:$retrofit",
+            retrofitGson         : "com.squareup.retrofit2:converter-gson:$retrofit",
+            retrofitRx           : "com.squareup.retrofit2:adapter-rxjava2:$retrofit",
+
+            //OkHttp
+            okHttpInterceptor    : "com.squareup.okhttp3:logging-interceptor:$okHttp",
 
             //Firebase
             FirebaseMessaging   : "com.google.firebase:firebase-messaging:$firebaseVersion",
