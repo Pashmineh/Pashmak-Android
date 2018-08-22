@@ -4,14 +4,19 @@ import android.app.Application
 import app.pashmak.com.pashmak.app.PashmakApplication
 import app.pashmak.com.pashmak.di.builder.ActivityBuilder
 import app.pashmak.com.pashmak.di.module.AppModule
+import app.pashmak.com.pashmak.di.module.NetworkModule
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
 
 
 @Component(
         modules = [
             AppModule::class,
-            ActivityBuilder::class]
+            ActivityBuilder::class,
+            NetworkModule::class,
+            AndroidInjectionModule::class
+        ]
 )
 interface AppComponent {
     @Component.Builder

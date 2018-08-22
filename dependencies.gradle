@@ -10,6 +10,8 @@ ext {
     androidCompileSdkVersion = 28
 
     final supportVersion = '1.0.0-rc01'
+    final archVersion = '2.0.0-alpha1'
+
     final rxJava = '2.2.0'
     final rxAndroid = '2.1.0'
     final daggerVersion = '2.15'
@@ -24,6 +26,11 @@ ext {
 
             //Kotlin
             kotlin              : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+
+            //ARCH
+            ArchLifeCycle        : "androidx.lifecycle:lifecycle-extensions:$archVersion",
+            ArchReactiveStreams  : "androidx.lifecycle:lifecycle-reactivestreams:$archVersion",
+//            ArchJava8            : "androidx.lifecycle:lifecycle-common-java8:$archVersion",
 
             //Support
             supportAppCompat    : "androidx.appcompat:appcompat:$supportVersion",
