@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="viewModel"
             type="app.pashmak.com.pashmak.ui.login.LoginViewModel"/>
     </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="17dp"
+        android:paddingBottom="17dp"
+        android:paddingStart="23dp"
+        android:paddingEnd="23dp">
+        
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/__img_logo_top"
+            android:layout_width="40dp"
+            android:layout_height="67dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/ic_pashmak"/>
+
+        <EditText
+            android:id="@+id/edt_mobile"
+            style="@style/EditTextStyle"
+            app:layout_constraintTop_toBottomOf="@+id/__img_logo_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="52dp"
+            android:gravity="center"
+            android:hint="@string/mobile_phone"/>
+
+        <EditText
+            android:id="@+id/edt_national_code"
+            style="@style/EditTextStyle"
+            app:layout_constraintTop_toBottomOf="@+id/edt_mobile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="13dp"
+            android:gravity="center"
+            android:hint="@string/national_code"/>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -10,5 +10,9 @@ class SplashActivity: BaseActivity<SplashViewModel, ActivitySplashBinding>()
     override val binding: ActivitySplashBinding by lazy { DataBindingUtil.setContentView<ActivitySplashBinding>(this, R.layout.activity_splash) }
     override val viewModel: SplashViewModel by getLazyViewModel()
 
+    override fun onViewInitialized(binding: ActivitySplashBinding) {
+        super.onViewInitialized(binding)
+        viewModel.progressSplash()
+    }
 
 }

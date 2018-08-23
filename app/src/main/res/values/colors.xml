@@ -6,5 +6,7 @@
 
 
     <color name="Platinium">#e8e8e8</color>
+    <color name="Ash_grey">#bababa</color>
+    <color name="Dark_tangerine">#f5a623</color>
     <color name="Black">#000000</color>
 </resources>
