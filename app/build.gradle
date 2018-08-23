@@ -47,7 +47,10 @@ dependencies {
     implementation appDependencies.kotlin
 
     implementation appDependencies.supportAppCompat
+    implementation appDependencies.constraintLayout
+    implementation appDependencies.constraintLayoutSolver
 //    implementation 'androidx.annotation:annotation:1.0.0-alpha1'
+
 
     // Arch
     implementation appDependencies.ArchLifeCycle

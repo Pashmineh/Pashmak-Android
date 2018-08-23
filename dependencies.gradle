@@ -10,6 +10,7 @@ ext {
     androidCompileSdkVersion = 28
 
     final supportVersion = '1.0.0-rc01'
+    final constraintVersion = '1.1.0'
     final archVersion = '2.0.0-alpha1'
 
     final rxJava = '2.2.0'
@@ -25,42 +26,44 @@ ext {
     dependencies = [
 
             //Kotlin
-            kotlin              : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
+            kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version",
 
             //ARCH
-            ArchLifeCycle        : "androidx.lifecycle:lifecycle-extensions:$archVersion",
-            ArchReactiveStreams  : "androidx.lifecycle:lifecycle-reactivestreams:$archVersion",
-//            ArchJava8            : "androidx.lifecycle:lifecycle-common-java8:$archVersion",
+            ArchLifeCycle           : "androidx.lifecycle:lifecycle-extensions:$archVersion",
+            ArchReactiveStreams     : "androidx.lifecycle:lifecycle-reactivestreams:$archVersion",
+//            ArchJava8             : "androidx.lifecycle:lifecycle-common-java8:$archVersion",
 
             //Support
-            supportAppCompat    : "androidx.appcompat:appcompat:$supportVersion",
+            supportAppCompat        : "androidx.appcompat:appcompat:$supportVersion",
+            constraintLayout        : "androidx.constraintlayout:constraintlayout:$constraintVersion",
+            constraintLayoutSolver  : "androidx.constraintlayout:constraintlayout-solver:$constraintVersion",
 
             //RXJava
-            rxJava               : "io.reactivex.rxjava2:rxjava:$rxJava",
+            rxJava                  : "io.reactivex.rxjava2:rxjava:$rxJava",
 
             //RXAndroid
-            rxAndroid            : "io.reactivex.rxjava2:rxandroid:$rxAndroid",
+            rxAndroid               : "io.reactivex.rxjava2:rxandroid:$rxAndroid",
 
             //Dagger
-            dagger               : "com.google.dagger:dagger:$daggerVersion",
-            daggerCompiler       : "com.google.dagger:dagger-compiler:$daggerVersion",
-            daggerAndroid        : "com.google.dagger:dagger-android-support:$daggerVersion",
-            daggerAndroidCompiler: "com.google.dagger:dagger-android-processor:$daggerVersion",
+            dagger                  : "com.google.dagger:dagger:$daggerVersion",
+            daggerCompiler          : "com.google.dagger:dagger-compiler:$daggerVersion",
+            daggerAndroid           : "com.google.dagger:dagger-android-support:$daggerVersion",
+            daggerAndroidCompiler   : "com.google.dagger:dagger-android-processor:$daggerVersion",
 
             //Retrofit
-            retrofit             : "com.squareup.retrofit2:retrofit:$retrofit",
-            retrofitGson         : "com.squareup.retrofit2:converter-gson:$retrofit",
-            retrofitRx           : "com.squareup.retrofit2:adapter-rxjava2:$retrofit",
+            retrofit                : "com.squareup.retrofit2:retrofit:$retrofit",
+            retrofitGson            : "com.squareup.retrofit2:converter-gson:$retrofit",
+            retrofitRx              : "com.squareup.retrofit2:adapter-rxjava2:$retrofit",
 
             //OkHttp
-            okHttpInterceptor    : "com.squareup.okhttp3:logging-interceptor:$okHttp",
+            okHttpInterceptor       : "com.squareup.okhttp3:logging-interceptor:$okHttp",
 
             //Firebase
-            FirebaseMessaging   : "com.google.firebase:firebase-messaging:$firebaseVersion",
+            FirebaseMessaging       : "com.google.firebase:firebase-messaging:$firebaseVersion",
 
             //GLIDE
-            glide                : "com.github.bumptech.glide:glide:$GlideVersion",
-            glideCompiler        : "com.github.bumptech.glide:compiler:$GlideVersion"
+            glide                   : "com.github.bumptech.glide:glide:$GlideVersion",
+            glideCompiler           : "com.github.bumptech.glide:compiler:$GlideVersion"
     ]
 
 }
