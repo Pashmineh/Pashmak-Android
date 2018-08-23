@@ -4,6 +4,7 @@ import app.pashmak.com.pashmak.ui.base.BaseViewModel
 import javax.inject.Inject
 
 class SplashViewModel
-    @Inject constructor(): BaseViewModel()
+    @Inject constructor(private val navigator: SplashNavigator)
+    : BaseViewModel()
 {
 }
