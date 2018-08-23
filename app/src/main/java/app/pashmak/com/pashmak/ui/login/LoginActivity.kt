@@ -15,4 +15,10 @@ class LoginActivity: BaseActivity<LoginViewModel, ActivityLoginBinding>()
     override val viewModel: LoginViewModel by getLazyViewModel()
     override val binding: ActivityLoginBinding
             by lazy { DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login) }
+
+    override fun onViewInitialized(binding: ActivityLoginBinding) {
+        super.onViewInitialized(binding)
+        binding.viewModel = viewModel
+        viewModel.observeInputChanges(this)
+    }
 }

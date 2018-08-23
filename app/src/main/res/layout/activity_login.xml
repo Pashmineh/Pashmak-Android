@@ -33,7 +33,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="52dp"
             android:gravity="center"
-            android:hint="@string/mobile_phone"/>
+            android:hint="@string/mobile_phone"
+            android:inputType="phone"
+            android:maxLength="11"
+            bindValue="@{viewModel.phoneValue}"/>
 
         <EditText
             android:id="@+id/edt_national_code"
@@ -43,7 +46,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="13dp"
             android:gravity="center"
-            android:hint="@string/national_code"/>
+            android:hint="@string/national_code"
+            android:inputType="number"
+            android:maxLength="10"
+            bindValue="@{viewModel.nationalCodeValue}"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/ButtonStyle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:text="@string/enter"
+            android:enabled="@{viewModel.buttonIsEnable}"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
