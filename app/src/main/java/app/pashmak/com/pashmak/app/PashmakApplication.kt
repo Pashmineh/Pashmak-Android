@@ -2,6 +2,7 @@ package app.pashmak.com.pashmak.app
 
 import android.app.Activity
 import android.app.Application
+import app.pashmak.com.pashmak.di.component.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
@@ -18,9 +19,9 @@ class PashmakApplication: Application(), HasActivityInjector
 
     override fun onCreate() {
         super.onCreate()
-//        DaggerAppComponent.builder()
-//                .application(this)
-//                .build()
-//                .inject(this)
+        DaggerAppComponent.builder()
+                .application(this)
+                .build()
+                .inject(this)
     }
 }

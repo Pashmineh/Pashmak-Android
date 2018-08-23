@@ -14,7 +14,7 @@ ext {
 
     final rxJava = '2.2.0'
     final rxAndroid = '2.1.0'
-    final daggerVersion = '2.15'
+    final daggerVersion = '2.16'
     final retrofit = '2.4.0'
     final okHttp = '3.11.0'
     final firebaseVersion = '17.3.0'

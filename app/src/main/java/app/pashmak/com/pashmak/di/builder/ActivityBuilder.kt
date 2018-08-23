@@ -1,6 +1,6 @@
 package app.pashmak.com.pashmak.di.builder
 
-import app.pashmak.com.pashmak.ui.SplashActivity
+import app.pashmak.com.pashmak.ui.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
