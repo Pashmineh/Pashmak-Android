@@ -15,7 +15,7 @@ import javax.inject.Inject
  * @param V A ViewModel class that inherited from [BaseViewModel], will be used as default ViewModel of activity
  * @param B A Binding class that inherited from [ViewDataBinding], will be used for creating View of this activity
  */
-abstract class BaseActivity<V : BaseViewModel/*, B : ViewDataBinding*/> : AppCompatActivity(), BaseView<V/*, B*/> {
+abstract class BaseActivity<V : BaseViewModel, B : ViewDataBinding> : AppCompatActivity(), BaseView<V, B> {
     /*override lateinit var binding: B*/
 
 
@@ -43,17 +43,14 @@ abstract class BaseActivity<V : BaseViewModel/*, B : ViewDataBinding*/> : AppCom
         // we should inject dependencies before invoking super.onCreate()
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
-        // initialize binding
-        /*binding = DataBindingUtil.setContentView(this, layoutId)
-        binding.setLifecycleOwner(this)*/
+        binding.setLifecycleOwner(this)
 
         // set viewModel as an observer to this activity lifecycle events
         lifecycle.addObserver(viewModel)
-        //todo:  viewModel.checkConnection()
         // observe viewModel uiActions in order to pass this activity as argument of uiAction
         viewModel.activityAction.observe(this, Observer { it?.getContentIfNotHandled()?.invoke(this) })
 
-//        onViewInitialized(binding)
+        onViewInitialized(binding)
     }
 
 
