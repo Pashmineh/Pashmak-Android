@@ -59,7 +59,8 @@
             android:layout_marginStart="30dp"
             android:layout_marginEnd="30dp"
             android:text="@string/enter"
-            android:enabled="@{viewModel.buttonIsEnable}"/>
+            android:enabled="@{viewModel.buttonIsEnable}"
+            android:onClick="@{() -> viewModel.login()}"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

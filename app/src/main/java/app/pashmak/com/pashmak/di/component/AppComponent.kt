@@ -3,6 +3,8 @@ package app.pashmak.com.pashmak.di.component
 import android.app.Application
 import app.pashmak.com.pashmak.app.PashmakApplication
 import app.pashmak.com.pashmak.di.builder.ActivityBuilder
+import app.pashmak.com.pashmak.di.builder.RepositoryBuilder
+import app.pashmak.com.pashmak.di.builder.ViewModelBuilder
 import app.pashmak.com.pashmak.di.module.AppModule
 import app.pashmak.com.pashmak.di.module.NetworkModule
 import dagger.BindsInstance
@@ -17,6 +19,8 @@ import javax.inject.Singleton
             AppModule::class,
             ActivityBuilder::class,
             NetworkModule::class,
+            ViewModelBuilder::class,
+            RepositoryBuilder::class,
             AndroidInjectionModule::class
         ]
 )
