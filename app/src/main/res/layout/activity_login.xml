@@ -23,7 +23,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/ic_pashmak"/>
+            app:srcCompat="@drawable/ic_pashmak"
+            android:transitionName="@string/login_shared_element_name"/>
 
         <EditText
             android:id="@+id/edt_mobile"

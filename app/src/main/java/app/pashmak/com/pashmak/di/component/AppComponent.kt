@@ -4,6 +4,7 @@ import android.app.Application
 import app.pashmak.com.pashmak.app.PashmakApplication
 import app.pashmak.com.pashmak.di.builder.ActivityBuilder
 import app.pashmak.com.pashmak.di.builder.RepositoryBuilder
+import app.pashmak.com.pashmak.di.builder.ResourceBuilder
 import app.pashmak.com.pashmak.di.builder.ViewModelBuilder
 import app.pashmak.com.pashmak.di.module.AppModule
 import app.pashmak.com.pashmak.di.module.NetworkModule
@@ -21,6 +22,7 @@ import javax.inject.Singleton
             NetworkModule::class,
             ViewModelBuilder::class,
             RepositoryBuilder::class,
+            ResourceBuilder::class,
             AndroidInjectionModule::class
         ]
 )

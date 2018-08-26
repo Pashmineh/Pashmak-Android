@@ -6,4 +6,6 @@
     <string name="mobile_phone">شماره تلفن همراه</string>
     <string name="national_code">کد ملی</string>
     <string name="enter">ورود</string>
+
+    <string name="login_shared_element_name">pashmak_logo</string>
 </resources>
