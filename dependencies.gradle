@@ -9,10 +9,9 @@ ext {
     androidTargetSdkVersion = 28
     androidCompileSdkVersion = 28
 
-    final supportVersion = '1.0.0-rc01'
+    final supportVersion = '1.0.0-alpha1'
     final constraintVersion = '1.1.0'
     final archVersion = '2.0.0-alpha1'
-    final animationVersion = '1.0.0-alpha1'
 
     final rxJava = '2.2.0'
     final rxAndroid = '2.1.0'
@@ -36,9 +35,11 @@ ext {
 
             //Support
             supportAppCompat        : "androidx.appcompat:appcompat:$supportVersion",
+            supportDesign           : "com.google.android.material:material:$supportVersion",
+            dynamicAnimation        : "androidx.dynamicanimation:dynamicanimation:$supportVersion",
             constraintLayout        : "androidx.constraintlayout:constraintlayout:$constraintVersion",
             constraintLayoutSolver  : "androidx.constraintlayout:constraintlayout-solver:$constraintVersion",
-            dynamicAnimation        : "androidx.dynamicanimation:dynamicanimation:$animationVersion",
+
 
             //RXJava
             rxJava                  : "io.reactivex.rxjava2:rxjava:$rxJava",

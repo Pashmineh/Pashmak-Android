@@ -1,15 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="viewModel"
             type="app.pashmak.com.pashmak.ui.main.MainViewModel"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/ToolbarStyle">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <TextView
+                        android:id="@+id/txt_name"
+                        style="@style/TextViewStyle"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        android:fontFamily="@font/iran_sans_light"
+                        android:textSize="@dimen/text_size_large"
+                        tools:text="مهدی آقاجانی"/>
+
+                    <TextView
+                        android:id="@+id/txt_period"
+                        style="@style/TextViewStyle"
+                        app:layout_constraintRight_toRightOf="@+id/txt_name"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_name"
+                        android:layout_marginTop="3dp"
+                        tools:text="دوره شهریور ۹۷"/>
+
+                    <TextView
+                        android:id="@+id/txt_balance"
+                        style="@style/TextViewStyle"
+                        app:layout_constraintRight_toRightOf="@+id/txt_period"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_period"
+                        android:fontFamily="@font/iran_sans_bold"
+                        android:textSize="@dimen/text_size_xxlarge"
+                        android:textColor="@color/Ruddy"
+                        android:layout_marginTop="3dp"
+                        tools:text="۱۸٫۰۰۰۰- تومان"/>
+
+                    <TextView
+                        android:id="@+id/txt_expenses"
+                        style="@style/TextViewStyle"
+                        app:layout_constraintRight_toRightOf="@+id/txt_balance"
+                        app:layout_constraintTop_toBottomOf="@+id/txt_balance"
+                        android:fontFamily="@font/sans_light"
+                        android:textSize="@dimen/text_size_normal"
+                        android:textColor="@color/Davy_grey"
+                        android:layout_marginTop="3dp"
+                        tools:text="مجموع پرداختی این دوره: ۵٫۰۰۰ تومان"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>
