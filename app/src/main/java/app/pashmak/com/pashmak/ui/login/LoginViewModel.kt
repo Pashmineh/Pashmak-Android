@@ -28,6 +28,7 @@ class LoginViewModel
     val phoneValue: NonNullLiveData<String> = NonNullLiveData("")
     val nationalCodeValue: NonNullLiveData<String> = NonNullLiveData("")
     val buttonIsEnable: NonNullLiveData<Boolean> = NonNullLiveData(false)
+    val isLoading: NonNullLiveData<Boolean> = NonNullLiveData(false)
 
     fun observeInputChanges(lifecycleOwner: LifecycleOwner) {
 
@@ -48,10 +49,12 @@ class LoginViewModel
     }
 
     fun login() {
+        isLoading.value = true
         loginUseCase.setParameters(phoneValue.value, nationalCodeValue.value).execute(compositeDisposable, ::onLoginResponse)
     }
 
     fun onLoginResponse(response: APIResponse<LoginResponse>) {
+        isLoading.value = false
         when (response) {
             is SuccessResponse -> {
                 activityAction{ navigator.startActivity(it, MainActivity::class.java, MainActivity.getCallingBundle()) }

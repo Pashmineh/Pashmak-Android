@@ -2,6 +2,7 @@ package app.pashmak.com.pashmak.util
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.View
 import android.widget.EditText
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
@@ -22,5 +23,20 @@ object BindingAdapters {
             }
         })
 
+    }
+
+    @JvmStatic
+    @BindingAdapter("isTransparent")
+    fun isTransparent(view: View, value: Boolean){
+        if(value)
+            view.alpha = 0.2f
+        else
+            view.alpha = 1f
+    }
+
+    @JvmStatic
+    @BindingAdapter("changeVisibility")
+    fun changeVisibility(view: View, visible: Boolean) {
+        view.visibility = if (visible) View.VISIBLE else View.GONE
     }
 }
