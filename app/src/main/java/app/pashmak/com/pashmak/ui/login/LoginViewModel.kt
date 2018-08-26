@@ -6,6 +6,7 @@ import app.pashmak.com.pashmak.data.model.login.LoginResponse
 import app.pashmak.com.pashmak.data.model.response.APIResponse
 import app.pashmak.com.pashmak.data.model.response.ErrorResponse
 import app.pashmak.com.pashmak.data.model.response.SuccessResponse
+import app.pashmak.com.pashmak.data.source.preference.AppPreferencesHelper
 import app.pashmak.com.pashmak.domain.login.LoginUseCase
 import app.pashmak.com.pashmak.ui.base.BaseViewModel
 import app.pashmak.com.pashmak.ui.main.MainActivity
@@ -22,7 +23,8 @@ import javax.inject.Inject
 class LoginViewModel
 @Inject constructor(
         private val loginUseCase: LoginUseCase,
-        private val navigator: LoginNavigator
+        private val navigator: LoginNavigator,
+        private val preferencesHelper: AppPreferencesHelper
 ) : BaseViewModel() {
 
     val phoneValue: NonNullLiveData<String> = NonNullLiveData("")
@@ -55,8 +57,15 @@ class LoginViewModel
 
     fun onLoginResponse(response: APIResponse<LoginResponse>) {
         isLoading.value = false
+
         when (response) {
             is SuccessResponse -> {
+
+                preferencesHelper.token = response.value.token
+                preferencesHelper.firstName = response.value.firstName
+                preferencesHelper.lastName = response.value.lastName
+                preferencesHelper.avatar = response.value.avatar ?: ""
+
                 activityAction{ navigator.startActivity(it, MainActivity::class.java, MainActivity.getCallingBundle()) }
             }
             is ErrorResponse -> {

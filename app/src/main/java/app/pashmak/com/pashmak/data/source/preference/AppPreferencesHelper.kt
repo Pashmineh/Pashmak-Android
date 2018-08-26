@@ -15,6 +15,10 @@ class AppPreferencesHelper @Inject constructor(context: Context) {
         private const val PREF_NAME = "pref_pashmak"
         private const val ACCESS_TOKEN = "UserToken"
         private const val REFRESH_TOKEN = "RefreshToken"
+
+        private const val FIRST_NAME  = "FirstName"
+        private const val LAST_NAME   = "LastName"
+        private const val USER_AVATAR = "Avatar"
     }
 
     /**
@@ -26,5 +30,9 @@ class AppPreferencesHelper @Inject constructor(context: Context) {
      * provide saving and getting refresh token from preferences in order to use in [TokenAuthenticator]
      */
     var refreshToken: String by PreferenceDelegate(prefs, REFRESH_TOKEN, "")
+
+    var firstName: String by PreferenceDelegate(prefs, FIRST_NAME, "")
+    var lastName: String by PreferenceDelegate(prefs, LAST_NAME, "")
+    var avatar: String by PreferenceDelegate(prefs, USER_AVATAR, "")
 
 }

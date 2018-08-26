@@ -14,6 +14,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -33,6 +35,8 @@ android {
     androidExtensions {
         experimental = true
     }
+
+
 }
 
 kapt {
@@ -42,7 +46,7 @@ kapt {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    def appDependencies  = rootProject.ext.dependencies
+    def appDependencies = rootProject.ext.dependencies
 
     implementation appDependencies.kotlin
 
@@ -52,7 +56,6 @@ dependencies {
     implementation appDependencies.constraintLayout
     implementation appDependencies.constraintLayoutSolver
 //    implementation 'androidx.annotation:annotation:1.0.0-alpha1'
-
 
     // Arch
     implementation appDependencies.ArchLifeCycle
@@ -78,7 +81,6 @@ dependencies {
 
     implementation appDependencies.glide
     kapt appDependencies.glideCompiler
-
 
     //TODO move to dependencies.gradle
     testImplementation 'junit:junit:4.12'

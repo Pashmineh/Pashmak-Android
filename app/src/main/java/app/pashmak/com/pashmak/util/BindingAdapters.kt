@@ -4,8 +4,10 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
+import app.pashmak.com.pashmak.app.GlideApp
 
 object BindingAdapters {
     @JvmStatic
@@ -38,5 +40,15 @@ object BindingAdapters {
     @BindingAdapter("changeVisibility")
     fun changeVisibility(view: View, visible: Boolean) {
         view.visibility = if (visible) View.VISIBLE else View.GONE
+    }
+
+    @JvmStatic
+    @BindingAdapter("loadImageUrl")
+    fun loadImageUrl(imageView: AppCompatImageView, url: String){
+        if(url.isNotEmpty())
+            GlideApp
+                    .with(imageView)
+                    .load(url)
+                    .into(imageView)
     }
 }
