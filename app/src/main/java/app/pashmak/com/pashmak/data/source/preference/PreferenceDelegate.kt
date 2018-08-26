@@ -35,6 +35,6 @@ class PreferenceDelegate<T>(val prefs: SharedPreferences, val name: String, val 
             is Float -> putFloat(name, value)
             else -> throw IllegalArgumentException("This type can not be saved into preferences")
         }.apply()
-        cachedT = null
+        cachedT = value
     }
 }

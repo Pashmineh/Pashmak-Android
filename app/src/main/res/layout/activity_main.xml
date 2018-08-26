@@ -45,6 +45,7 @@
                         app:layout_constraintRight_toRightOf="@+id/txt_name"
                         app:layout_constraintTop_toBottomOf="@+id/txt_name"
                         android:layout_marginTop="3dp"
+                        android:text="@{viewModel.cycle}"
                         tools:text="دوره شهریور ۹۷"/>
 
                     <TextView
@@ -56,6 +57,7 @@
                         android:textSize="@dimen/text_size_xxlarge"
                         android:textColor="@color/Ruddy"
                         android:layout_marginTop="3dp"
+                        android:text="@{viewModel.balance}"
                         tools:text="۱۸٫۰۰۰۰- تومان"/>
 
                     <TextView
@@ -67,6 +69,7 @@
                         android:textSize="@dimen/text_size_normal"
                         android:textColor="@color/Davy_grey"
                         android:layout_marginTop="3dp"
+                        android:text="@{viewModel.paid}"
                         tools:text="مجموع پرداختی این دوره: ۵٫۰۰۰ تومان"/>
 
                     <app.pashmak.com.pashmak.ui.customviews.CircleImageView

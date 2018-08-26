@@ -62,9 +62,9 @@ class LoginViewModel
             is SuccessResponse -> {
 
                 preferencesHelper.token = response.value.token
+                preferencesHelper.userPhone = phoneValue.value
                 preferencesHelper.firstName = response.value.firstName
                 preferencesHelper.lastName = response.value.lastName
-                preferencesHelper.avatar = response.value.avatar ?: ""
 
                 activityAction{ navigator.startActivity(it, MainActivity::class.java, MainActivity.getCallingBundle()) }
             }

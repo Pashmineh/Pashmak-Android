@@ -1,5 +1,6 @@
 package app.pashmak.com.pashmak.data.source.cloud
 
+import app.pashmak.com.pashmak.data.model.home.HomeData
 import app.pashmak.com.pashmak.data.model.login.LoginRequest
 import app.pashmak.com.pashmak.data.model.login.LoginResponse
 import app.pashmak.com.pashmak.data.restful.APIs
@@ -12,8 +13,11 @@ import io.reactivex.Flowable
  * @param apIsWithToken instance of with-token apis
  */
 class CloudRepository(private val apIs: APIs, private val apIsWithToken: APIsWithToken) : BaseCloudRepository {
+
     override fun login(loginModel: LoginRequest): Flowable<LoginResponse> {
         return apIs.requestRegisterUser(loginModel)
     }
+
+    override fun getHomeData(): Flowable<HomeData> = apIsWithToken.getHomeData()
 
 }

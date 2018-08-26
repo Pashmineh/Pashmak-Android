@@ -16,9 +16,9 @@ class AppPreferencesHelper @Inject constructor(context: Context) {
         private const val ACCESS_TOKEN = "UserToken"
         private const val REFRESH_TOKEN = "RefreshToken"
 
-        private const val FIRST_NAME  = "FirstName"
-        private const val LAST_NAME   = "LastName"
-        private const val USER_AVATAR = "Avatar"
+        private const val FIRST_NAME = "FirstName"
+        private const val LAST_NAME = "LastName"
+        private const val USER_PHONE = "UserPhone"
     }
 
     /**
@@ -33,6 +33,7 @@ class AppPreferencesHelper @Inject constructor(context: Context) {
 
     var firstName: String by PreferenceDelegate(prefs, FIRST_NAME, "")
     var lastName: String by PreferenceDelegate(prefs, LAST_NAME, "")
-    var avatar: String by PreferenceDelegate(prefs, USER_AVATAR, "")
+    var userPhone: String by PreferenceDelegate(prefs, USER_PHONE, "")
 
 }
+

@@ -101,7 +101,7 @@ class NetworkModule {
                     .headers(headers)
                     // add tokenType and token to Authorization header of request
                     .addHeader("Authorization",
-                            "Bearer $preferencesHelper.token")
+                            "Bearer ${preferencesHelper.token}")
                     .method(request.method(), request.body())
             chain.proceed(requestBuilder.build())
         })
