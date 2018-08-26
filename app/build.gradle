@@ -49,6 +49,7 @@ dependencies {
     implementation appDependencies.supportAppCompat
     implementation appDependencies.constraintLayout
     implementation appDependencies.constraintLayoutSolver
+    implementation appDependencies.dynamicAnimation
 //    implementation 'androidx.annotation:annotation:1.0.0-alpha1'
 
 
