@@ -1,7 +1,6 @@
 package app.pashmak.com.pashmak.ui.login
 
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.LifecycleOwner
 import app.pashmak.com.pashmak.data.model.login.LoginResponse
 import app.pashmak.com.pashmak.data.model.response.APIResponse
@@ -9,6 +8,7 @@ import app.pashmak.com.pashmak.data.model.response.ErrorResponse
 import app.pashmak.com.pashmak.data.model.response.SuccessResponse
 import app.pashmak.com.pashmak.domain.login.LoginUseCase
 import app.pashmak.com.pashmak.ui.base.BaseViewModel
+import app.pashmak.com.pashmak.ui.main.MainActivity
 import app.pashmak.com.pashmak.util.MOBILE_REGEX
 import app.pashmak.com.pashmak.util.checkNationalCodeValidity
 import app.pashmak.com.pashmak.util.livedata.NonNullLiveData
@@ -21,9 +21,10 @@ import javax.inject.Inject
 
 class LoginViewModel
 @Inject constructor(
-        private val loginUseCase: LoginUseCase
-)
-    : BaseViewModel() {
+        private val loginUseCase: LoginUseCase,
+        private val navigator: LoginNavigator
+) : BaseViewModel() {
+
     val phoneValue: NonNullLiveData<String> = NonNullLiveData("")
     val nationalCodeValue: NonNullLiveData<String> = NonNullLiveData("")
     val buttonIsEnable: NonNullLiveData<Boolean> = NonNullLiveData(false)
@@ -46,14 +47,18 @@ class LoginViewModel
 
     }
 
-    fun login(){
+    fun login() {
         loginUseCase.setParameters(phoneValue.value, nationalCodeValue.value).execute(compositeDisposable, ::onLoginResponse)
     }
 
-    fun onLoginResponse(response: APIResponse<LoginResponse>){
-        when(response){
-            is SuccessResponse -> { Log.d("Response State", "Success") }
-            is ErrorResponse -> { Log.d("Response State", "ErrorState") }
+    fun onLoginResponse(response: APIResponse<LoginResponse>) {
+        when (response) {
+            is SuccessResponse -> {
+                activityAction{ navigator.startActivity(it, MainActivity::class.java, MainActivity.getCallingBundle()) }
+            }
+            is ErrorResponse -> {
+                Log.d("Response State", "ErrorState")
+            }
         }
     }
 

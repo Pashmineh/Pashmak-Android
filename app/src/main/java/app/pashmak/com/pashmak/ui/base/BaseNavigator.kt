@@ -22,6 +22,19 @@ interface BaseNavigator {
     }
 
     /**
+     * Start an Activity with Bundle
+     *
+     * @param cls the Activity class to be opened.
+     * @param dataBundle which provides from getCallingBundle()
+     * @param activityBundle how the Activity should be started
+     */
+    fun startActivity(activity: FragmentActivity, cls: Class<*>, dataBundle: Bundle, activityBundle: Bundle) {
+        val intent = Intent(activity, cls)
+        intent.putExtras(dataBundle)
+        activity.startActivity(intent, activityBundle)
+    }
+
+    /**
      * Finish an Activity
      * @param activity requested activity
      */

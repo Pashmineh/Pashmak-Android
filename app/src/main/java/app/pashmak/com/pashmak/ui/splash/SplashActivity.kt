@@ -26,7 +26,7 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
             springForce.stiffness = SpringForce.STIFFNESS_LOW
             springForce.dampingRatio = SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY
             spring = springForce
-            setStartVelocity(500f)
+            setStartVelocity(600f)
         }
 
         val scaleYAnim = SpringAnimation(binding.TxtDesc, DynamicAnimation.SCALE_Y).apply {
@@ -35,7 +35,7 @@ class SplashActivity : BaseActivity<SplashViewModel, ActivitySplashBinding>() {
             springForce.stiffness = SpringForce.STIFFNESS_LOW
             springForce.dampingRatio = SpringForce.DAMPING_RATIO_MEDIUM_BOUNCY
             spring = springForce
-            setStartVelocity(500f)
+            setStartVelocity(600f)
         }
 
         scaleXAnim.start()
