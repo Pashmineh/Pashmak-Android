@@ -4,5 +4,5 @@
     <font
         app:fontStyle="normal"
         app:fontWeight="400"
-        app:font="@font/iran_yekan_light_mobile"/>
+        app:font="@font/iran_sans_regular"/>
 </font-family>
