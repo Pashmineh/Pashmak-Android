@@ -7,9 +7,9 @@ import androidx.lifecycle.Observer
 
 /**
  * A wrapper class for [MutableLiveData] that does not accept or return null values.
- * The [defaultValue] causes all observers to observe data at least one time
+ * The [defaultValue] causes all observers to observe data at least one timeEpoc
  *
- * @param defaultValue will be set to [MutableLiveData.setValue] at the first time, and after that
+ * @param defaultValue will be set to [MutableLiveData.setValue] at the first timeEpoc, and after that
  * all null values in [getValue], [setValue] and [observe] will be replaced with default value
  */
 class NonNullLiveData<T>(private val defaultValue: T) : MutableLiveData<T>() {

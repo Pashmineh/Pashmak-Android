@@ -21,9 +21,8 @@ class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>()
         binding.viewModel = viewModel
         binding.adapter = EventListAdapter(
                 emptyList(),
-                viewModel,
-                {}
-        )
+                viewModel
+        ) { position = it }
         observeLiveData()
     }
 

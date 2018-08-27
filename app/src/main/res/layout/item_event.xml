@@ -7,6 +7,12 @@
         <variable
             name="item"
             type="app.pashmak.com.pashmak.data.model.home.Event"/>
+        <variable
+            name="viewModel"
+            type="app.pashmak.com.pashmak.ui.main.MainViewModel"/>
+        <variable
+            name="position"
+            type="Integer"/>
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -105,6 +111,7 @@
                 android:fontFamily="@font/sans_light"
                 android:textSize="@dimen/text_size_small"
                 android:textColor="@color/Davy_grey"
+                android:text="@{viewModel.getFormattedEventDate(position)}"
                 tools:text="دوشنبه ۵ شهریور ۹۷ |‌ ساعت ۱۳ الی ۱۴"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

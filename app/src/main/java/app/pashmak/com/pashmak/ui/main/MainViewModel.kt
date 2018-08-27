@@ -55,4 +55,11 @@ class MainViewModel
             }
         }
     }
+
+    fun getFormattedEventDate(position: Int): String{
+        val item = eventListLiveData.value?.get(position)
+        return item?.let {
+            resourceProvider.getString(R.string.event_formatted_date, it.getDayOfWeek(), it.getDayOfMonth(), it.getMonthName(), it.getYear(), it.getHour())
+        } ?: ""
+    }
 }
