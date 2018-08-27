@@ -1,7 +1,9 @@
 package app.pashmak.com.pashmak.ui.main
 
 import android.graphics.drawable.Drawable
+import androidx.lifecycle.MutableLiveData
 import app.pashmak.com.pashmak.R
+import app.pashmak.com.pashmak.data.model.home.Event
 import app.pashmak.com.pashmak.data.model.home.HomeData
 import app.pashmak.com.pashmak.data.model.response.APIResponse
 import app.pashmak.com.pashmak.data.model.response.ErrorResponse
@@ -26,9 +28,12 @@ class MainViewModel
     val placeHolder: Drawable = resourceProvider.getDrawable(R.drawable.vector_person_48dp)!!
     val fullName: String = "${preferencesHelper.firstName} ${preferencesHelper.lastName}"
     val avatar: String = getAvatarUrl(preferencesHelper.userPhone)
+
     var balance: NonNullLiveData<String> = NonNullLiveData("0")
     var paid: NonNullLiveData<String> = NonNullLiveData("0")
     var cycle: NonNullLiveData<String> = NonNullLiveData("")
+
+    val eventListLiveData: MutableLiveData<List<Event>> = MutableLiveData()
 
 
     init {
@@ -44,6 +49,7 @@ class MainViewModel
                     stateColor.value = resourceProvider.getColor(R.color.Ruddy)
                 balance.value = resourceProvider.getString(R.string.number_toman, formatNumber(response.value.balance.balance))
                 paid.value = resourceProvider.getString(R.string.total_paid_cycle, formatNumber(response.value.balance.paid))
+                eventListLiveData.value = response.value.eventList
             }
             is ErrorResponse -> {
             }

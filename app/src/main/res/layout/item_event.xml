@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="item"
+            type="app.pashmak.com.pashmak.data.model.home.Event"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        app:cardCornerRadius="5dp"
+        app:cardBackgroundColor="@color/Isabelline"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vertical_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_calendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/vector_calendar"/>
+
+            <TextView
+                android:id="@+id/txt_event"
+                style="@style/TextViewStyle"
+                app:layout_constraintTop_toTopOf="@+id/img_calendar"
+                app:layout_constraintBottom_toBottomOf="@+id/img_calendar"
+                app:layout_constraintRight_toLeftOf="@+id/img_calendar"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/Davy_grey"
+                android:fontFamily="@font/sans_light"
+                android:text="@{item.name}"
+                tools:text="ناهار خوشمزه در محل شرکت"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_map"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/vertical_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/img_calendar"
+                android:layout_marginTop="8dp"
+                app:layout_constraintDimensionRatio="h,1:1.1"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_map"/>
+
+            <TextView
+                android:id="@+id/txt_address"
+                style="@style/TextViewStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/vertical_guideline"
+                app:layout_constraintTop_toTopOf="@+id/img_map"
+                app:layout_constraintBottom_toBottomOf="@+id/img_map"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:lines="9"
+                android:scrollbars="vertical"
+                android:background="@color/Timber_wolf"
+                android:textColor="@color/Davy_grey"
+                android:textSize="@dimen/text_size_normal"
+                android:lineSpacingExtra="1.5dp"
+                android:text="@{item.location}"
+                tools:text="تهران، میدان آرژانتین خیابان الوند، کوچه ۳۱ پلاک ۹ طبقه ۶"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintRight_toRightOf="@+id/img_calendar"
+                app:layout_constraintTop_toBottomOf="@+id/txt_address"
+                android:layout_marginTop="10dp"
+                app:srcCompat="@drawable/vector_time"/>
+
+            <TextView
+                style="@style/TextViewStyle"
+                app:layout_constraintTop_toTopOf="@+id/img_time"
+                app:layout_constraintBottom_toBottomOf="@+id/img_time"
+                app:layout_constraintRight_toLeftOf="@+id/img_time"
+                android:layout_marginRight="6dp"
+                android:fontFamily="@font/sans_light"
+                android:textSize="@dimen/text_size_small"
+                android:textColor="@color/Davy_grey"
+                tools:text="دوشنبه ۵ شهریور ۹۷ |‌ ساعت ۱۳ الی ۱۴"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

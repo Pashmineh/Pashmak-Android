@@ -2,6 +2,7 @@ package app.pashmak.com.pashmak.ui.main
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import app.pashmak.com.pashmak.R
 import app.pashmak.com.pashmak.databinding.ActivityMainBinding
 import app.pashmak.com.pashmak.ui.base.BaseActivity
@@ -18,5 +19,17 @@ class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>()
     override fun onViewInitialized(binding: ActivityMainBinding) {
         super.onViewInitialized(binding)
         binding.viewModel = viewModel
+        binding.adapter = EventListAdapter(
+                emptyList(),
+                viewModel,
+                {}
+        )
+        observeLiveData()
+    }
+
+    private fun observeLiveData(){
+        viewModel.eventListLiveData.observe(this, Observer {
+            binding.adapter?.swapItems(it)
+        })
     }
 }

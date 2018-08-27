@@ -9,6 +9,9 @@
 
     <string name="number_toman">%s تومان</string>
     <string name="total_paid_cycle">مجموع پرداختی این دوره: %s تومان</string>
+    
+    <string name="checkin_has_registered">ورود امروز خود را ثبت کرده‌اید</string>
+    <string name="register_checkin">ثبت ورود</string>
 
     <string name="login_shared_element_name">pashmak_logo</string>
 </resources>
