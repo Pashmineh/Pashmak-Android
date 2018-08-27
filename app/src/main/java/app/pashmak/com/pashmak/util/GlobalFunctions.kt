@@ -1,5 +1,8 @@
 package app.pashmak.com.pashmak.util
 
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+
 fun checkNationalCodeValidity(nationalCode: String?): Boolean {
 
     var nationalCodeCumulative: Long = 0
@@ -43,4 +46,9 @@ fun checkNationalCodeValidity(nationalCode: String?): Boolean {
                     &&
                     11 - nationalCodeMod == nationalCodeIntArray[9].toLong())
 
+}
+
+fun formatNumber(number: Double) : String{
+    val symbol = DecimalFormatSymbols().also { it.groupingSeparator = '/' }
+    return DecimalFormat("#,###", symbol).format(number)
 }

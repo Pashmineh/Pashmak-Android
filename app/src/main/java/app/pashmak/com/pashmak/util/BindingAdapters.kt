@@ -1,5 +1,6 @@
 package app.pashmak.com.pashmak.util
 
+import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import app.pashmak.com.pashmak.app.GlideApp
+import app.pashmak.com.pashmak.ui.customviews.CircleImageView
 
 object BindingAdapters {
     @JvmStatic
@@ -29,8 +31,8 @@ object BindingAdapters {
 
     @JvmStatic
     @BindingAdapter("isTransparent")
-    fun isTransparent(view: View, value: Boolean){
-        if(value)
+    fun isTransparent(view: View, value: Boolean) {
+        if (value)
             view.alpha = 0.2f
         else
             view.alpha = 1f
@@ -43,12 +45,23 @@ object BindingAdapters {
     }
 
     @JvmStatic
-    @BindingAdapter("loadImageUrl")
-    fun loadImageUrl(imageView: AppCompatImageView, url: String){
-        if(url.isNotEmpty())
+    @BindingAdapter(value = arrayOf("imageUrl", "placeholder"), requireAll = false)
+    fun loadImageUrl(imageView: AppCompatImageView, url: String, placeHolder: Drawable) {
+        if (url.isNotEmpty())
             GlideApp
                     .with(imageView)
                     .load(url)
+                    .placeholder(placeHolder)
                     .into(imageView)
+        else
+            GlideApp.with(imageView)
+                    .load(placeHolder)
+                    .into(imageView)
+    }
+
+    @JvmStatic
+    @BindingAdapter("changeBorderColor")
+    fun changeBorderColor(imageView: CircleImageView, color: Int) {
+        imageView.borderColor = color
     }
 }

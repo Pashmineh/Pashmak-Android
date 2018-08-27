@@ -55,7 +55,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/txt_period"
                         android:fontFamily="@font/iran_sans_bold"
                         android:textSize="@dimen/text_size_xxlarge"
-                        android:textColor="@color/Ruddy"
+                        android:textColor="@{viewModel.stateColor}"
                         android:layout_marginTop="3dp"
                         android:text="@{viewModel.balance}"
                         tools:text="۱۸٫۰۰۰۰- تومان"/>
@@ -80,9 +80,10 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_marginLeft="10dp"
                         app:civ_border_width="2dp"
-                        app:civ_border_color="@color/Ruddy"
-                        app:srcCompat="@drawable/vector_person_48dp"
-                        loadImageUrl="@{viewModel.avatar}"/>
+                        changeBorderColor="@{viewModel.stateColor}"
+                        imageUrl="@{viewModel.avatar}"
+                        placeholder="@{viewModel.placeHolder}"/>
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
