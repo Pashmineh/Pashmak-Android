@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer
 import app.pashmak.com.pashmak.R
 import app.pashmak.com.pashmak.databinding.ActivityMainBinding
 import app.pashmak.com.pashmak.ui.base.BaseActivity
+import app.pashmak.com.pashmak.ui.main.adapter.EventListAdapter
 
 class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>()
 {
@@ -22,13 +23,14 @@ class MainActivity: BaseActivity<MainViewModel, ActivityMainBinding>()
         binding.adapter = EventListAdapter(
                 emptyList(),
                 viewModel
-        ) { position = it }
+        )
         observeLiveData()
     }
 
     private fun observeLiveData(){
         viewModel.eventListLiveData.observe(this, Observer {
             binding.adapter?.swapItems(it)
+            binding.eventList.smoothScrollToPosition(0)
         })
     }
 }

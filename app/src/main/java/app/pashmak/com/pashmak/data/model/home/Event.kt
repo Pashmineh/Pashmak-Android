@@ -5,23 +5,26 @@ import app.pashmak.com.pashmak.util.calendar.TimeZones
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-data class Event(
-        @SerializedName("id") val id: Int,
-        @SerializedName("name") val name: String,
-        @SerializedName("description") val description: String,
-        @SerializedName("eventTimeEpoch") val timeEpoc: Long,
-        @SerializedName("location") val location: String
-){
-    var persianDate : PersianDate? = null
-    val calendar : Calendar?  = Calendar.getInstance().also {
-        it.timeZone = TimeZones.ASIA_TEHRAN.timeZone
-        it.timeInMillis = timeEpoc
-        persianDate = PersianDate(it)
+class Event {
+
+    @SerializedName("id") var id: Int = 0
+    @SerializedName("name") lateinit var name: String
+    @SerializedName("description") lateinit var description: String
+    @SerializedName("eventTimeEpoch") var timeEpoc: Long = 0
+    @SerializedName("location") lateinit var location: String
+
+    val calendar by lazy {
+        Calendar.getInstance().also {
+            it.timeZone = TimeZones.ASIA_TEHRAN.timeZone
+            it.timeInMillis = timeEpoc
+        }
     }
 
-    fun getMonthName() =  persianDate?.monthName ?: ""
+    val persianDate: PersianDate? by lazy { PersianDate(calendar) }
+
+    fun getMonthName() = persianDate?.monthName ?: ""
     fun getDayOfMonth() = persianDate?.dayOfMonth ?: ""
     fun getDayOfWeek() = persianDate?.dayOfWeekName ?: ""
     fun getYear() = persianDate?.year ?: ""
-    fun getHour() = calendar?.get(Calendar.HOUR_OF_DAY) ?: 0
+    fun getHour() = "${calendar?.get(Calendar.HOUR_OF_DAY) ?: 0}:${calendar?.get(Calendar.MINUTE) ?: 0}"
 }

@@ -8,7 +8,7 @@
             type="app.pashmak.com.pashmak.ui.main.MainViewModel"/>
         <variable
             name="adapter"
-            type="app.pashmak.com.pashmak.ui.main.EventListAdapter" />
+            type="app.pashmak.com.pashmak.ui.main.adapter.EventListAdapter" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -101,11 +101,12 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/event_list"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/btn_checkin"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/btn_checkin"
+                app:layout_constraintVertical_bias="0"
                 android:layout_marginBottom="5dp"
                 android:adapter="@{adapter}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>

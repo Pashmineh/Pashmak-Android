@@ -42,7 +42,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_event"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_desc"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 app:srcCompat="@drawable/vector_calendar"/>
@@ -50,8 +51,7 @@
             <TextView
                 android:id="@+id/txt_event"
                 style="@style/TextViewStyle"
-                app:layout_constraintTop_toTopOf="@+id/img_calendar"
-                app:layout_constraintBottom_toBottomOf="@+id/img_calendar"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/img_calendar"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/Davy_grey"
@@ -59,13 +59,23 @@
                 android:text="@{item.name}"
                 tools:text="ناهار خوشمزه در محل شرکت"/>
 
+            <TextView
+                android:id="@+id/txt_desc"
+                style="@style/TextViewStyle"
+                app:layout_constraintTop_toBottomOf="@+id/txt_event"
+                app:layout_constraintRight_toRightOf="@+id/txt_event"
+                android:textColor="@color/Davy_grey"
+                android:textSize="@dimen/text_size_normal"
+                android:text="@{item.description}"
+                tools:text="به صرف دیزی"/>
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_map"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/vertical_guideline"
-                app:layout_constraintTop_toBottomOf="@+id/img_calendar"
+                app:layout_constraintTop_toBottomOf="@+id/txt_desc"
                 android:layout_marginTop="8dp"
                 app:layout_constraintDimensionRatio="h,1:1.1"
                 android:scaleType="fitXY"
@@ -89,7 +99,7 @@
                 android:background="@color/Timber_wolf"
                 android:textColor="@color/Davy_grey"
                 android:textSize="@dimen/text_size_normal"
-                android:lineSpacingExtra="1.5dp"
+                android:lineSpacingExtra="2dp"
                 android:text="@{item.location}"
                 tools:text="تهران، میدان آرژانتین خیابان الوند، کوچه ۳۱ پلاک ۹ طبقه ۶"/>
 
