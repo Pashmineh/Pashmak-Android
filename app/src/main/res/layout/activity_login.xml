@@ -49,7 +49,7 @@
             android:layout_marginTop="13dp"
             android:gravity="center"
             android:hint="@string/national_code"
-            android:inputType="number"
+            android:inputType="numberPassword"
             android:maxLength="10"
             bindValue="@{viewModel.nationalCodeValue}"
             isTransparent="@{viewModel.isLoading}"/>

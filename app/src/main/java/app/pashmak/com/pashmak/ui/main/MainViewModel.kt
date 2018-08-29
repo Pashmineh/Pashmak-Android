@@ -24,7 +24,7 @@ import javax.inject.Inject
 
 class MainViewModel
 @Inject constructor(
-        homeDataUseCase: HomeDataUseCase,
+        private val homeDataUseCase: HomeDataUseCase,
         private val preferencesHelper: AppPreferencesHelper,
         private val checkInUseCase: CheckInUseCase,
         private val resourceProvider: BaseResourceProvider
@@ -48,8 +48,8 @@ class MainViewModel
 
     init {
         //TODO do something for loading
-        homeDataUseCase.execute(compositeDisposable, this::onHomeDataResponse)
-        checkTodayCheckIn()
+        getHomeData()
+//        checkTodayCheckIn()
         setButtonText()
     }
 
@@ -61,6 +61,8 @@ class MainViewModel
     private fun setButtonText(){
         checkInButtonText.value = if(todayCheckInEnable.value) resourceProvider.getString(R.string.register_checkin) else resourceProvider.getString(R.string.checkin_has_registered)
     }
+
+    fun getHomeData() = homeDataUseCase.execute(compositeDisposable, this::onHomeDataResponse)
 
     fun getFormattedEventDate(position: Int): String{
         val item = eventListLiveData.value?.get(position)

@@ -20,6 +20,7 @@ ext {
     final okHttp = '3.11.0'
     final firebaseVersion = '17.3.0'
     final GlideVersion = '4.8.0'
+    final shimmerVersion = '0.3.0'
 
 
 
@@ -66,7 +67,10 @@ ext {
 
             //GLIDE
             glide                   : "com.github.bumptech.glide:glide:$GlideVersion",
-            glideCompiler           : "com.github.bumptech.glide:compiler:$GlideVersion"
+            glideCompiler           : "com.github.bumptech.glide:compiler:$GlideVersion",
+
+            //Shimmer
+            Shimmer                 : "com.facebook.shimmer:shimmer:$shimmerVersion"
     ]
 
 }

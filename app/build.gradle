@@ -77,10 +77,15 @@ dependencies {
     implementation appDependencies.retrofitRx
     implementation appDependencies.okHttpInterceptor
 
+    //Firebase
     implementation appDependencies.FirebaseMessaging
 
+    //Glide
     implementation appDependencies.glide
     kapt appDependencies.glideCompiler
+
+    //Shimmer
+    implementation appDependencies.Shimmer
 
     //TODO move to dependencies.gradle
     testImplementation 'junit:junit:4.12'
