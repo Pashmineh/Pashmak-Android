@@ -14,6 +14,7 @@ import app.pashmak.com.pashmak.util.MOBILE_REGEX
 import app.pashmak.com.pashmak.util.checkNationalCodeValidity
 import app.pashmak.com.pashmak.util.livedata.NonNullLiveData
 import app.pashmak.com.pashmak.util.toFlowable
+import com.google.firebase.iid.FirebaseInstanceId
 import io.reactivex.Flowable
 import io.reactivex.functions.BiFunction
 import io.reactivex.schedulers.Schedulers
@@ -36,8 +37,8 @@ class LoginViewModel
 
         compositeDisposable.add(
                 Flowable.combineLatest<String, String, Boolean>(
-                        phoneValue.toFlowable(lifecycleOwner).throttleFirst(200, TimeUnit.MILLISECONDS),
-                        nationalCodeValue.toFlowable(lifecycleOwner).throttleFirst(200, TimeUnit.MILLISECONDS),
+                        phoneValue.toFlowable(lifecycleOwner).throttleLast(200, TimeUnit.MILLISECONDS),
+                        nationalCodeValue.toFlowable(lifecycleOwner).throttleLast(200, TimeUnit.MILLISECONDS),
                         BiFunction { phone, nationalCode ->
                             phoneIsValid(phone) && nationalCode.length == 10 && checkNationalCodeValidity(nationalCode)
                         })
@@ -52,7 +53,7 @@ class LoginViewModel
 
     fun login() {
         isLoading.value = true
-        loginUseCase.setParameters(phoneValue.value, nationalCodeValue.value).execute(compositeDisposable, ::onLoginResponse)
+        loginUseCase.setParameters(phoneValue.value, nationalCodeValue.value, FirebaseInstanceId.getInstance().token!!).execute(compositeDisposable, ::onLoginResponse)
     }
 
     fun onLoginResponse(response: APIResponse<LoginResponse>) {

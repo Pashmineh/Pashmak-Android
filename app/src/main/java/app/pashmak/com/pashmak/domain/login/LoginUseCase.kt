@@ -15,16 +15,18 @@ class LoginUseCase
 {
     private lateinit var userName: String
     private lateinit var password: String
+    private lateinit var pushToken: String
 
-    fun setParameters(userName: String, password: String) : LoginUseCase
+    fun setParameters(userName: String, password: String, pushToken: String) : LoginUseCase
     {
         return this.also {
             this.userName = userName
             this.password = password
+            this.pushToken = pushToken
         }
     }
 
     override fun buildUseCaseObservable(): Flowable<LoginResponse> {
-        return loginRepository.login(userName, password)
+        return loginRepository.login(userName, password, pushToken)
     }
 }

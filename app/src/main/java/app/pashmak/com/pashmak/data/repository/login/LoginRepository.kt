@@ -5,5 +5,5 @@ import io.reactivex.Flowable
 
 interface LoginRepository
 {
-    fun login(userName: String, password: String): Flowable<LoginResponse>
+    fun login(userName: String, password: String, pushToken: String): Flowable<LoginResponse>
 }

@@ -19,6 +19,7 @@ class AppPreferencesHelper @Inject constructor(context: Context) {
         private const val FIRST_NAME = "FirstName"
         private const val LAST_NAME = "LastName"
         private const val USER_PHONE = "UserPhone"
+        private const val LATEST_CHECKIN = "LatestCheckIn"
     }
 
     /**
@@ -34,6 +35,7 @@ class AppPreferencesHelper @Inject constructor(context: Context) {
     var firstName: String by PreferenceDelegate(prefs, FIRST_NAME, "")
     var lastName: String by PreferenceDelegate(prefs, LAST_NAME, "")
     var userPhone: String by PreferenceDelegate(prefs, USER_PHONE, "")
+    var latestCheckIn: Long by PreferenceDelegate(prefs, LATEST_CHECKIN, 0)
 
 }
 

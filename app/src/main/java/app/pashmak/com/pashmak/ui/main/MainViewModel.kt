@@ -1,14 +1,19 @@
 package app.pashmak.com.pashmak.ui.main
 
 import android.graphics.drawable.Drawable
+import android.text.format.DateUtils
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import app.pashmak.com.pashmak.R
 import app.pashmak.com.pashmak.data.model.home.Event
 import app.pashmak.com.pashmak.data.model.home.HomeData
+import app.pashmak.com.pashmak.data.model.home.checkin.CheckInResponse
+import app.pashmak.com.pashmak.data.model.home.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.response.APIResponse
 import app.pashmak.com.pashmak.data.model.response.ErrorResponse
 import app.pashmak.com.pashmak.data.model.response.SuccessResponse
 import app.pashmak.com.pashmak.data.source.preference.AppPreferencesHelper
+import app.pashmak.com.pashmak.domain.home.CheckInUseCase
 import app.pashmak.com.pashmak.domain.home.HomeDataUseCase
 import app.pashmak.com.pashmak.ui.base.BaseViewModel
 import app.pashmak.com.pashmak.util.formatNumber
@@ -19,8 +24,9 @@ import javax.inject.Inject
 
 class MainViewModel
 @Inject constructor(
-        preferencesHelper: AppPreferencesHelper,
         homeDataUseCase: HomeDataUseCase,
+        private val preferencesHelper: AppPreferencesHelper,
+        private val checkInUseCase: CheckInUseCase,
         private val resourceProvider: BaseResourceProvider
 ) : BaseViewModel() {
 
@@ -33,12 +39,39 @@ class MainViewModel
     var paid: NonNullLiveData<String> = NonNullLiveData("0")
     var cycle: NonNullLiveData<String> = NonNullLiveData("")
 
+    val todayCheckInEnable: NonNullLiveData<Boolean> = NonNullLiveData(true)
+    val checkInButtonText: NonNullLiveData<String> = NonNullLiveData("")
+    val isLoading: NonNullLiveData<Boolean> = NonNullLiveData(false)
+
     val eventListLiveData: MutableLiveData<List<Event>> = MutableLiveData()
 
 
     init {
         //TODO do something for loading
         homeDataUseCase.execute(compositeDisposable, this::onHomeDataResponse)
+        checkTodayCheckIn()
+        setButtonText()
+    }
+
+    private fun checkTodayCheckIn(){
+        if(preferencesHelper.latestCheckIn != 0L && DateUtils.isToday(preferencesHelper.latestCheckIn))
+            todayCheckInEnable.value = false
+    }
+
+    private fun setButtonText(){
+        checkInButtonText.value = if(todayCheckInEnable.value) resourceProvider.getString(R.string.register_checkin) else resourceProvider.getString(R.string.checkin_has_registered)
+    }
+
+    fun getFormattedEventDate(position: Int): String{
+        val item = eventListLiveData.value?.get(position)
+        return item?.let {
+            resourceProvider.getString(R.string.event_formatted_date, it.getDayOfWeek(), it.getDayOfMonth(), it.getMonthName(), it.getYear(), it.getHour())
+        } ?: ""
+    }
+
+    fun checkIn(){
+        isLoading.value = true
+        checkInUseCase.setParameters(CheckInType.MANUAL).execute(compositeDisposable, this::onCheckInResponse)
     }
 
     fun onHomeDataResponse(response: APIResponse<HomeData>) {
@@ -56,10 +89,15 @@ class MainViewModel
         }
     }
 
-    fun getFormattedEventDate(position: Int): String{
-        val item = eventListLiveData.value?.get(position)
-        return item?.let {
-            resourceProvider.getString(R.string.event_formatted_date, it.getDayOfWeek(), it.getDayOfMonth(), it.getMonthName(), it.getYear(), it.getHour())
-        } ?: ""
+    fun onCheckInResponse(response: APIResponse<CheckInResponse>){
+        isLoading.value = false
+        when(response){
+            is SuccessResponse -> {
+                preferencesHelper.latestCheckIn = response.value.timeEpoch
+                todayCheckInEnable.value = false
+                setButtonText()
+            }
+            is ErrorResponse -> { Log.d("CheckIn Response", "Failure") }
+        }
     }
 }
