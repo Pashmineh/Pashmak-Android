@@ -49,7 +49,7 @@ class MainViewModel
     init {
         //TODO do something for loading
         getHomeData()
-//        checkTodayCheckIn()
+        checkTodayCheckIn()
         setButtonText()
     }
 

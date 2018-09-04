@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "427141287035",
-    "firebase_url": "https://pashmak-6a96d.firebaseio.com",
-    "project_id": "pashmak-6a96d",
-    "storage_bucket": "pashmak-6a96d.appspot.com"
+    "project_number": "724958820995",
+    "firebase_url": "https://pashmak-179a7.firebaseio.com",
+    "project_id": "pashmak-179a7",
+    "storage_bucket": "pashmak-179a7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:427141287035:android:197e54f523a897f4",
+        "mobilesdk_app_id": "1:724958820995:android:197e54f523a897f4",
         "android_client_info": {
           "package_name": "app.pashmak.com.pashmak"
         }
       },
       "oauth_client": [
         {
-          "client_id": "427141287035-9bpaeb52tq8a19tgqkebbra1b7o33avd.apps.googleusercontent.com",
+          "client_id": "724958820995-dumabjad5l629q49m3vq9l218nkthb1d.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "app.pashmak.com.pashmak",
-            "certificate_hash": "b236fbd18fb9c240c1fc3a1299e27508e0ccbaae"
+            "certificate_hash": "127f832cdd84af105dad0348ce0c8c6f5b871432"
           }
         },
         {
-          "client_id": "427141287035-j526o3kd280re5n08qi39a2069orci9d.apps.googleusercontent.com",
+          "client_id": "724958820995-fn27q26hatejorun4jeur0qhc6jrg35u.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyClaeiJc4Xw--AKI4fdBEK6m4d9rmVUjBM"
+          "current_key": "AIzaSyAcaGIen8PkJoKqdf2O4iPwNDG7s3b8s5s"
         }
       ],
       "services": {
@@ -40,41 +40,10 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "427141287035-j526o3kd280re5n08qi39a2069orci9d.apps.googleusercontent.com",
+              "client_id": "724958820995-fn27q26hatejorun4jeur0qhc6jrg35u.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:427141287035:android:f51d8bf18098ffef",
-        "android_client_info": {
-          "package_name": "com.pashmak.app"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "427141287035-j526o3kd280re5n08qi39a2069orci9d.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyClaeiJc4Xw--AKI4fdBEK6m4d9rmVUjBM"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

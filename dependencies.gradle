@@ -19,6 +19,7 @@ ext {
     final retrofit = '2.4.0'
     final okHttp = '3.11.0'
     final firebaseVersion = '17.3.0'
+//    final playServiceVersion = '15.0.1'
     final GlideVersion = '4.8.0'
     final shimmerVersion = '0.3.0'
 
@@ -54,6 +55,12 @@ ext {
             daggerAndroid           : "com.google.dagger:dagger-android-support:$daggerVersion",
             daggerAndroidCompiler   : "com.google.dagger:dagger-android-processor:$daggerVersion",
 
+            //Firebase
+            FirebaseMessaging       : "com.google.firebase:firebase-messaging:$firebaseVersion",
+
+            //PlayServices
+//            NearBy                  : "com.google.android.gms:play-services-nearby:$playServiceVersion",
+
             //Retrofit
             retrofit                : "com.squareup.retrofit2:retrofit:$retrofit",
             retrofitGson            : "com.squareup.retrofit2:converter-gson:$retrofit",
@@ -61,9 +68,6 @@ ext {
 
             //OkHttp
             okHttpInterceptor       : "com.squareup.okhttp3:logging-interceptor:$okHttp",
-
-            //Firebase
-            FirebaseMessaging       : "com.google.firebase:firebase-messaging:$firebaseVersion",
 
             //GLIDE
             glide                   : "com.github.bumptech.glide:glide:$GlideVersion",

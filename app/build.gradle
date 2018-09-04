@@ -72,7 +72,6 @@ dependencies {
     implementation appDependencies.dynamicAnimation
     implementation appDependencies.constraintLayout
     implementation appDependencies.constraintLayoutSolver
-//    implementation 'androidx.annotation:annotation:1.0.0-alpha1'
 
     // Arch
     implementation appDependencies.ArchLifeCycle
@@ -88,14 +87,18 @@ dependencies {
     kapt appDependencies.daggerCompiler
     kapt appDependencies.daggerAndroidCompiler
 
+    //Firebase
+    implementation appDependencies.FirebaseMessaging
+
+    //Play Services
+//    implementation appDependencies.NearBy
+    implementation 'org.altbeacon:android-beacon-library:2.15.1'
+
     // Retrofit - OkHttp
     implementation appDependencies.retrofit
     implementation appDependencies.retrofitGson
     implementation appDependencies.retrofitRx
     implementation appDependencies.okHttpInterceptor
-
-    //Firebase
-    implementation appDependencies.FirebaseMessaging
 
     //Glide
     implementation appDependencies.glide
