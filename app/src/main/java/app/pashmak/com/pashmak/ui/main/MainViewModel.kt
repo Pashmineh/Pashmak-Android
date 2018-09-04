@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import app.pashmak.com.pashmak.R
 import app.pashmak.com.pashmak.data.model.home.Event
+import app.pashmak.com.pashmak.util.livedata.Event as EventLiveData
 import app.pashmak.com.pashmak.data.model.home.HomeData
 import app.pashmak.com.pashmak.data.model.home.checkin.CheckInResponse
 import app.pashmak.com.pashmak.data.model.home.checkin.CheckInType
@@ -44,6 +45,7 @@ class MainViewModel
     val isLoading: NonNullLiveData<Boolean> = NonNullLiveData(false)
 
     val eventListLiveData: MutableLiveData<List<Event>> = MutableLiveData()
+    val checkInLiveData: MutableLiveData<EventLiveData<Boolean>> = MutableLiveData()
 
 
     init {
@@ -72,8 +74,9 @@ class MainViewModel
     }
 
     fun checkIn(){
-        isLoading.value = true
-        checkInUseCase.setParameters(CheckInType.MANUAL).execute(compositeDisposable, this::onCheckInResponse)
+//        isLoading.value = true
+        checkInLiveData.value = EventLiveData(true)
+//        checkInUseCase.setParameters(CheckInType.MANUAL).execute(compositeDisposable, this::onCheckInResponse)
     }
 
     fun onHomeDataResponse(response: APIResponse<HomeData>) {

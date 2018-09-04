@@ -2,4 +2,7 @@ package app.pashmak.com.pashmak.util
 
 const val BASE_URL = "http://178.128.195.55:8080"
 
+const val BEACON_UUID = "00001803-494c-4f47-4943-544543480000"
+const val IBEACON_LAYOUT_ID = "m:2-3=0215,i:4-19,i:20-21,i:22-23,p:24-24"
+
 fun getAvatarUrl(phone: String) = if (phone.isNotEmpty()) "http://178.62.20.28/Photos/$phone.jpeg" else ""
