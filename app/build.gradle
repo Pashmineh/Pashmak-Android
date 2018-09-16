@@ -91,7 +91,7 @@ dependencies {
     implementation appDependencies.FirebaseMessaging
 
     //Play Services
-//    implementation appDependencies.NearBy
+    implementation appDependencies.Location
     implementation 'org.altbeacon:android-beacon-library:2.15.1'
 
     // Retrofit - OkHttp

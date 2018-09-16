@@ -17,10 +17,15 @@ import app.pashmak.com.pashmak.data.source.preference.AppPreferencesHelper
 import app.pashmak.com.pashmak.domain.home.CheckInUseCase
 import app.pashmak.com.pashmak.domain.home.HomeDataUseCase
 import app.pashmak.com.pashmak.ui.base.BaseViewModel
+import app.pashmak.com.pashmak.util.PermissionUtil
 import app.pashmak.com.pashmak.util.formatNumber
 import app.pashmak.com.pashmak.util.getAvatarUrl
 import app.pashmak.com.pashmak.util.livedata.NonNullLiveData
 import app.pashmak.com.pashmak.util.providers.BaseResourceProvider
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
+import java.util.jar.Manifest
 import javax.inject.Inject
 
 class MainViewModel
@@ -28,8 +33,13 @@ class MainViewModel
         private val homeDataUseCase: HomeDataUseCase,
         private val preferencesHelper: AppPreferencesHelper,
         private val checkInUseCase: CheckInUseCase,
-        private val resourceProvider: BaseResourceProvider
+        private val resourceProvider: BaseResourceProvider,
+        val permissionUtil: PermissionUtil
 ) : BaseViewModel() {
+
+    companion object {
+        private val GPS_PERMISSION = android.Manifest.permission.ACCESS_COARSE_LOCATION
+    }
 
     val stateColor: NonNullLiveData<Int> = NonNullLiveData(resourceProvider.getColor(R.color.Kelly_green))
     val placeHolder: Drawable = resourceProvider.getDrawable(R.drawable.vector_person_48dp)!!
@@ -45,6 +55,7 @@ class MainViewModel
     val isLoading: NonNullLiveData<Boolean> = NonNullLiveData(false)
 
     val eventListLiveData: MutableLiveData<List<Event>> = MutableLiveData()
+    val settingsLiveData: MutableLiveData<EventLiveData<Boolean>> = MutableLiveData()
     val checkInLiveData: MutableLiveData<EventLiveData<Boolean>> = MutableLiveData()
 
 
@@ -75,7 +86,9 @@ class MainViewModel
 
     fun checkIn(){
 //        isLoading.value = true
-        checkInLiveData.value = EventLiveData(true)
+
+        activityAction{ permissionUtil.request(it, arrayOf(GPS_PERMISSION), this::onPermissionResponse)  }
+
 //        checkInUseCase.setParameters(CheckInType.MANUAL).execute(compositeDisposable, this::onCheckInResponse)
     }
 
@@ -103,6 +116,13 @@ class MainViewModel
                 setButtonText()
             }
             is ErrorResponse -> { Log.d("CheckIn Response", "Failure") }
+        }
+    }
+
+    fun onPermissionResponse(grantedPermissions: List<String>, deniedPermissions: List<String>){
+        if(grantedPermissions.contains(GPS_PERMISSION)) {
+            settingsLiveData.value = EventLiveData(true)
+            checkInLiveData.value = EventLiveData(true)
         }
     }
 }
