@@ -1,5 +1,6 @@
 package app.pashmak.com.pashmak.ui.main
 
+import android.bluetooth.BluetoothAdapter
 import android.graphics.drawable.Drawable
 import android.text.format.DateUtils
 import android.util.Log
@@ -27,6 +28,10 @@ import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.LocationSettingsRequest
 import java.util.jar.Manifest
 import javax.inject.Inject
+import androidx.core.app.ActivityCompat.startActivityForResult
+import android.content.Intent
+
+
 
 class MainViewModel
 @Inject constructor(
@@ -38,6 +43,10 @@ class MainViewModel
 ) : BaseViewModel() {
 
     companion object {
+
+        const val REQUEST_CHECK_LOCATION_SETTINGS = 232
+        const val REQUEST_ENABLE_BT = 841
+
         private val GPS_PERMISSION = android.Manifest.permission.ACCESS_COARSE_LOCATION
     }
 
@@ -85,12 +94,28 @@ class MainViewModel
     }
 
     fun checkIn(){
-//        isLoading.value = true
 
         activityAction{ permissionUtil.request(it, arrayOf(GPS_PERMISSION), this::onPermissionResponse)  }
 
+//        isLoading.value = true
 //        checkInUseCase.setParameters(CheckInType.MANUAL).execute(compositeDisposable, this::onCheckInResponse)
     }
+
+    fun checkBluetoothSettings(){
+        val bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
+        if(bluetoothAdapter == null){
+            // Device doesn't support Bluetooth
+            return
+        }else if(!bluetoothAdapter.isEnabled){
+            val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
+            activityAction{ it.startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT) }
+        }
+        else{
+            findBeacon()
+        }
+    }
+
+    fun findBeacon(){}
 
     fun onHomeDataResponse(response: APIResponse<HomeData>) {
         when (response) {
@@ -122,7 +147,7 @@ class MainViewModel
     fun onPermissionResponse(grantedPermissions: List<String>, deniedPermissions: List<String>){
         if(grantedPermissions.contains(GPS_PERMISSION)) {
             settingsLiveData.value = EventLiveData(true)
-            checkInLiveData.value = EventLiveData(true)
+//            checkInLiveData.value = EventLiveData(true)
         }
     }
 }

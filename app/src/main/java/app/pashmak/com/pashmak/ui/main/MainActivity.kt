@@ -31,8 +31,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(), BeaconC
 
     companion object {
 
-        private const val REQUEST_CHECK_SETTINGS = 232
-
         fun getCallingBundle(): Bundle = Bundle()
     }
 
@@ -41,10 +39,6 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(), BeaconC
 
     override val viewModel: MainViewModel by getLazyViewModel()
     override val binding: ActivityMainBinding by lazy { DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main) }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onViewInitialized(binding: ActivityMainBinding) {
         super.onViewInitialized(binding)
@@ -76,12 +70,26 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(), BeaconC
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
         val states = LocationSettingsStates.fromIntent(intent)
-        when(requestCode) {
-            REQUEST_CHECK_SETTINGS ->{
-                when(resultCode){
-                    Activity.RESULT_OK -> { /*All required changes were successfully made*/ }
-                        Activity.RESULT_CANCELED -> { /*The user was asked to change settings, but chose not to*/ }
+
+        when (requestCode) {
+            MainViewModel.REQUEST_CHECK_LOCATION_SETTINGS -> {
+                when (resultCode) {
+                    Activity.RESULT_OK -> {
+                        viewModel.checkBluetoothSettings()
+                    }
+                    Activity.RESULT_CANCELED -> { /*The user was asked to change settings, but chose not to*/
+                    }
+                }
+            }
+            MainViewModel.REQUEST_ENABLE_BT -> {
+                when (resultCode) {
+                    Activity.RESULT_OK -> {
+                        viewModel.findBeacon()
+                    }
+                    Activity.RESULT_CANCELED -> { /*The user was asked to change settings, but chose not to*/
+                    }
                 }
             }
         }
@@ -125,15 +133,15 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(), BeaconC
                                     priority = LocationRequest.PRIORITY_HIGH_ACCURACY
                                 }
                         )
-                        .setNeedBle(true)
 
                 val result = LocationServices.getSettingsClient(this).checkLocationSettings(builder.build())
                 result.addOnCompleteListener { task ->
                     try {
                         val response = task.getResult(ApiException::class.java)
-
                         // All location settings are satisfied. The client can initialize location
                         // requests here.
+                        viewModel.checkBluetoothSettings()
+
                     } catch (exception: ApiException) {
                         when (exception.statusCode) {
 
@@ -147,7 +155,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(), BeaconC
                                     // and check the result in onActivityResult().
                                     resolvable.startResolutionForResult(
                                             this@MainActivity,
-                                            REQUEST_CHECK_SETTINGS)
+                                            MainViewModel.REQUEST_CHECK_LOCATION_SETTINGS)
                                 } catch (e: IntentSender.SendIntentException) {
                                     // Ignore the error.
                                 } catch (e: ClassCastException) {
