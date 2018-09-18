@@ -145,7 +145,7 @@
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="12dp"
                 android:text="@{viewModel.checkInButtonText}"
-                android:onClick="@{() -> viewModel.checkIn()}"
+                android:onClick="@{() -> viewModel.prepareCheckIn()}"
                 android:enabled="@{!viewModel.isLoading &amp;&amp; viewModel.todayCheckInEnable}"
                 isTransparent="@{viewModel.isLoading}"
                 tools:text="@string/register_checkin"/>

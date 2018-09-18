@@ -92,7 +92,7 @@ dependencies {
 
     //Play Services
     implementation appDependencies.Location
-    implementation 'org.altbeacon:android-beacon-library:2.15.1'
+//    implementation 'org.altbeacon:android-beacon-library:2.15.1'
 
     // Retrofit - OkHttp
     implementation appDependencies.retrofit
