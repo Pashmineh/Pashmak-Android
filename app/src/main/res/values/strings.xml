@@ -1,5 +1,7 @@
 <resources>
+
     <string name="app_name">Pashmak</string>
+    <string name="default_notification_channel_id">223</string>
 
     <string name="give_money">پول وده…. پول زوووور وده!</string>
 

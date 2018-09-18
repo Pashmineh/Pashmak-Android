@@ -17,12 +17,13 @@
 package app.pashmak.com.pashmak.services
 
 
+import android.content.Intent
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
+import app.pashmak.com.pashmak.R
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import androidx.localbroadcastmanager.content.LocalBroadcastManager
-import android.content.Intent
-
-
 
 
 class PushService : FirebaseMessagingService() {
@@ -49,7 +50,18 @@ class PushService : FirebaseMessagingService() {
         // [END_EXCLUDE]
 
 
-            LocalBroadcastManager.getInstance(this).sendBroadcast( Intent(PUSH_INTENT_FILTER))
+        LocalBroadcastManager.getInstance(this).sendBroadcast(Intent(PUSH_INTENT_FILTER))
+
+        val notification = NotificationCompat.Builder(this, resources.getString(R.string.default_notification_channel_id))
+                .setContentTitle(remoteMessage?.notification?.title ?: "")
+                .setContentText(remoteMessage?.notification?.body ?: "")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .build()
+
+        val manager = NotificationManagerCompat.from(applicationContext)
+        manager.notify(123, notification)
+
+
         // Check if message contains a data payload.
 //        if (remoteMessage?.data?.size?.let { it > 0 } == true) {
 //        }
