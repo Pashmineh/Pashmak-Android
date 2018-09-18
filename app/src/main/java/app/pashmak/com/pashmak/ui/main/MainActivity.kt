@@ -36,6 +36,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
     override fun onViewInitialized(binding: ActivityMainBinding) {
         super.onViewInitialized(binding)
         binding.viewModel = viewModel
+        binding.viewState = viewModel.viewState
         binding.adapter = EventListAdapter(
                 emptyList(),
                 viewModel

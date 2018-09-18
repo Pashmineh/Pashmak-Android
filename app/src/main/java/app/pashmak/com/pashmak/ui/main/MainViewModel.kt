@@ -1,6 +1,5 @@
 package app.pashmak.com.pashmak.ui.main
 
-import android.graphics.drawable.Drawable
 import android.text.format.DateUtils
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
@@ -17,7 +16,6 @@ import app.pashmak.com.pashmak.domain.home.CheckInUseCase
 import app.pashmak.com.pashmak.domain.home.HomeDataUseCase
 import app.pashmak.com.pashmak.ui.base.BaseViewModel
 import app.pashmak.com.pashmak.util.*
-import app.pashmak.com.pashmak.util.livedata.NonNullLiveData
 import app.pashmak.com.pashmak.util.providers.BaseResourceProvider
 import javax.inject.Inject
 import app.pashmak.com.pashmak.util.livedata.Event as EventLiveData
@@ -31,7 +29,8 @@ class MainViewModel
         private val checkInUseCase: CheckInUseCase,
         private val resourceProvider: BaseResourceProvider,
         val pashmakBeaconUtil: PashmakBeaconUtil,
-        val permissionUtil: PermissionUtil
+        val permissionUtil: PermissionUtil,
+        val viewState: MainViewState
 ) : BaseViewModel() {
 
     companion object {
@@ -41,39 +40,25 @@ class MainViewModel
         private val GPS_PERMISSION = android.Manifest.permission.ACCESS_COARSE_LOCATION
     }
 
-    val stateColor: NonNullLiveData<Int> = NonNullLiveData(resourceProvider.getColor(R.color.Kelly_green))
-    val placeHolder: Drawable = resourceProvider.getDrawable(R.drawable.vector_person_48dp)!!
-    val fullName: String = "${preferencesHelper.firstName} ${preferencesHelper.lastName}"
-    val avatar: String = getAvatarUrl(preferencesHelper.userPhone)
-
-    var balance: NonNullLiveData<String> = NonNullLiveData("0")
-    var paid: NonNullLiveData<String> = NonNullLiveData("0")
-    var cycle: NonNullLiveData<String> = NonNullLiveData("")
-
-    val todayCheckInEnable: NonNullLiveData<Boolean> = NonNullLiveData(true)
-    val checkInButtonText: NonNullLiveData<String> = NonNullLiveData("")
-    val isLoading: NonNullLiveData<Boolean> = NonNullLiveData(false)
 
     val eventListLiveData: MutableLiveData<List<Event>> = MutableLiveData()
     val settingsLiveData: MutableLiveData<EventLiveData<Boolean>> = MutableLiveData()
     val messageLiveData: MutableLiveData<String> = MutableLiveData()
 
 
-
     init {
         //TODO do something for loading
+        viewState.initialize(
+                "${preferencesHelper.firstName} ${preferencesHelper.lastName}",
+                getAvatarUrl(preferencesHelper.userPhone)
+        )
         getHomeData()
         checkTodayCheckIn()
-        setButtonText()
     }
 
     private fun checkTodayCheckIn() {
         if (preferencesHelper.latestCheckIn != 0L && DateUtils.isToday(preferencesHelper.latestCheckIn))
-            todayCheckInEnable.value = false
-    }
-
-    private fun setButtonText() {
-        checkInButtonText.value = if (todayCheckInEnable.value) resourceProvider.getString(R.string.register_checkin) else resourceProvider.getString(R.string.checkin_has_registered)
+            viewState.todayCheckInEnable.value = false
     }
 
     fun getHomeData() = homeDataUseCase.execute(compositeDisposable, this::onHomeDataResponse)
@@ -91,7 +76,7 @@ class MainViewModel
 
     fun checkBeaconState() {
         activityAction{ pashmakBeaconUtil.checkMyBeacon(it, this::onBeaconFound, this::onFindingBeaconFailed) }
-        isLoading.value = true
+        viewState.isLoading.value = true
     }
 
     fun checkIn() {
@@ -104,7 +89,7 @@ class MainViewModel
 
     private fun onFindingBeaconFailed(hasSettingsIssue: Boolean){
 
-        isLoading.value = false
+        viewState.isLoading.value = false
 
         if(!hasSettingsIssue){
             messageLiveData.value = "Pasho Boro Sherkat"
@@ -114,11 +99,7 @@ class MainViewModel
     private fun onHomeDataResponse(response: APIResponse<HomeData>) {
         when (response) {
             is SuccessResponse -> {
-                cycle.value = response.value.cycle
-                if (response.value.balance.balance < 0)
-                    stateColor.value = resourceProvider.getColor(R.color.Ruddy)
-                balance.value = resourceProvider.getString(R.string.number_toman, formatNumber(response.value.balance.balance))
-                paid.value = resourceProvider.getString(R.string.total_paid_cycle, formatNumber(response.value.balance.paid))
+                viewState.setHomeDataValues(response.value)
                 eventListLiveData.value = response.value.eventList
             }
             is ErrorResponse -> {
@@ -127,12 +108,11 @@ class MainViewModel
     }
 
     private fun onCheckInResponse(response: APIResponse<CheckInResponse>) {
-        isLoading.value = false
+        viewState.isLoading.value = false
         when (response) {
             is SuccessResponse -> {
                 preferencesHelper.latestCheckIn = response.value.timeEpoch
-                todayCheckInEnable.value = false
-                setButtonText()
+                viewState.onSuccessfulCheckIn()
             }
             is ErrorResponse -> {
                 Log.d("CheckIn Response", "Failure")

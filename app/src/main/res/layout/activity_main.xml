@@ -9,6 +9,9 @@
         <variable
             name="adapter"
             type="app.pashmak.com.pashmak.ui.main.adapter.EventListAdapter" />
+        <variable
+            name="viewState"
+            type="app.pashmak.com.pashmak.ui.main.MainViewState"/>
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -39,7 +42,7 @@
                         app:layout_constraintRight_toRightOf="parent"
                         android:fontFamily="@font/iran_sans_light"
                         android:textSize="@dimen/text_size_large"
-                        android:text="@{viewModel.fullName}"
+                        android:text="@{viewState.fullName}"
                         tools:text="مهدی آقاجانی"/>
 
                     <TextView
@@ -48,7 +51,7 @@
                         app:layout_constraintRight_toRightOf="@+id/txt_name"
                         app:layout_constraintTop_toBottomOf="@+id/txt_name"
                         android:layout_marginTop="3dp"
-                        android:text="@{viewModel.cycle}"
+                        android:text="@{viewState.cycle}"
                         tools:text="دوره شهریور ۹۷"/>
 
                     <TextView
@@ -58,9 +61,9 @@
                         app:layout_constraintTop_toBottomOf="@+id/txt_period"
                         android:fontFamily="@font/iran_sans_bold"
                         android:textSize="@dimen/text_size_xxlarge"
-                        android:textColor="@{viewModel.stateColor}"
+                        android:textColor="@{viewState.stateColor}"
                         android:layout_marginTop="3dp"
-                        android:text="@{viewModel.balance}"
+                        android:text="@{viewState.balance}"
                         tools:text="۱۸٫۰۰۰۰- تومان"/>
 
                     <TextView
@@ -72,7 +75,7 @@
                         android:textSize="@dimen/text_size_normal"
                         android:textColor="@color/Davy_grey"
                         android:layout_marginTop="3dp"
-                        android:text="@{viewModel.paid}"
+                        android:text="@{viewState.paid}"
                         tools:text="مجموع پرداختی این دوره: ۵٫۰۰۰ تومان"/>
 
                     <app.pashmak.com.pashmak.ui.customviews.CircleImageView
@@ -83,9 +86,9 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         android:layout_marginLeft="10dp"
                         app:civ_border_width="2dp"
-                        changeBorderColor="@{viewModel.stateColor}"
-                        imageUrl="@{viewModel.avatar}"
-                        placeholder="@{viewModel.placeHolder}"/>
+                        changeBorderColor="@{viewState.stateColor}"
+                        imageUrl="@{viewState.avatarUrl}"
+                        placeholder="@{viewState.placeHolder}"/>
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -110,7 +113,7 @@
                 android:layout_marginBottom="5dp"
                 android:adapter="@{adapter}"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                isTransparent="@{viewModel.isLoading}"/>
+                isTransparent="@{viewState.isLoading}"/>
             
             <com.facebook.shimmer.ShimmerFrameLayout
                 android:id="@+id/frame_shimmer"
@@ -144,10 +147,10 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_marginBottom="12dp"
-                android:text="@{viewModel.checkInButtonText}"
+                android:text="@{viewState.checkInButtonText}"
                 android:onClick="@{() -> viewModel.prepareCheckIn()}"
-                android:enabled="@{!viewModel.isLoading &amp;&amp; viewModel.todayCheckInEnable}"
-                isTransparent="@{viewModel.isLoading}"
+                android:enabled="@{!viewState.isLoading &amp;&amp; viewState.todayCheckInEnable}"
+                isTransparent="@{viewState.isLoading}"
                 tools:text="@string/register_checkin"/>
 
             <ProgressBar
@@ -157,7 +160,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                changeVisibility="@{viewModel.isLoading}"/>
+                changeVisibility="@{viewState.isLoading}"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
