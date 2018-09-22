@@ -5,6 +5,8 @@ import app.pashmak.com.pashmak.data.repository.home.HomeDataRepository
 import app.pashmak.com.pashmak.data.repository.home.HomeDataRepositoryImpl
 import app.pashmak.com.pashmak.data.repository.login.LoginRepository
 import app.pashmak.com.pashmak.data.repository.login.LoginRepositoryImpl
+import app.pashmak.com.pashmak.data.repository.polling.PollingDataRepository
+import app.pashmak.com.pashmak.data.repository.polling.PollingDataRepositoryImpl
 import dagger.Binds
 import dagger.Module
 
@@ -16,4 +18,7 @@ interface RepositoryBuilder {
 
     @Binds
     fun bindHomeDataRepository(homeDataRepositoryImpl: HomeDataRepositoryImpl): HomeDataRepository
+
+    @Binds
+    fun bindPollingDataRepository(pollingDataRepositoryImpl: PollingDataRepositoryImpl): PollingDataRepository
 }

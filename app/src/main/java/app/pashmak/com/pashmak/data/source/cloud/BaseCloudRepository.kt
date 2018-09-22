@@ -5,6 +5,8 @@ import app.pashmak.com.pashmak.data.model.home.checkin.CheckInResponse
 import app.pashmak.com.pashmak.data.model.home.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.login.LoginRequest
 import app.pashmak.com.pashmak.data.model.login.LoginResponse
+import app.pashmak.com.pashmak.data.model.polling.PollModel
+import app.pashmak.com.pashmak.data.model.polling.VoteModel
 import io.reactivex.Flowable
 
 
@@ -19,4 +21,11 @@ interface BaseCloudRepository {
     fun getHomeData(): Flowable<HomeData>
 
     fun checkin(checkInType: CheckInType): Flowable<CheckInResponse>
+
+    fun getPollings(): Flowable<List<PollModel>>
+
+    fun vote(voteModel: VoteModel): Flowable<List<PollModel>>
+
+    fun removeVote(voteModel: VoteModel): Flowable<List<PollModel>>
+
 }

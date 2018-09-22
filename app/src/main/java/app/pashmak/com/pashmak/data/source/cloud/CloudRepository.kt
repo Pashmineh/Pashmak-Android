@@ -5,6 +5,8 @@ import app.pashmak.com.pashmak.data.model.home.checkin.CheckInResponse
 import app.pashmak.com.pashmak.data.model.home.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.login.LoginRequest
 import app.pashmak.com.pashmak.data.model.login.LoginResponse
+import app.pashmak.com.pashmak.data.model.polling.PollModel
+import app.pashmak.com.pashmak.data.model.polling.VoteModel
 import app.pashmak.com.pashmak.data.restful.APIs
 import app.pashmak.com.pashmak.data.restful.APIsWithToken
 import io.reactivex.Flowable
@@ -23,5 +25,11 @@ class CloudRepository(private val apIs: APIs, private val apIsWithToken: APIsWit
     override fun getHomeData(): Flowable<HomeData> = apIsWithToken.getHomeData()
 
     override fun checkin(checkInType: CheckInType): Flowable<CheckInResponse> = apIsWithToken.checkIn(checkInType)
+
+    override fun getPollings() = apIsWithToken.getPolls()
+
+    override fun vote(voteModel: VoteModel) = apIsWithToken.vote(voteModel)
+
+    override fun removeVote(voteModel: VoteModel) = apIsWithToken.removeVote(voteModel)
 
 }
