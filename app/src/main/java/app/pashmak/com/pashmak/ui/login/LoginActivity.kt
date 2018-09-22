@@ -8,13 +8,14 @@ import app.pashmak.com.pashmak.ui.base.BaseActivity
 
 class LoginActivity: BaseActivity<LoginViewModel, ActivityLoginBinding>()
 {
+
     companion object {
         fun getCallingBundle(): Bundle = Bundle()
     }
 
     override val viewModel: LoginViewModel by getLazyViewModel()
-    override val binding: ActivityLoginBinding
-            by lazy { DataBindingUtil.setContentView<ActivityLoginBinding>(this, R.layout.activity_login) }
+    override val layoutId: Int
+        get() = R.layout.activity_login
 
     override fun onViewInitialized(binding: ActivityLoginBinding) {
         super.onViewInitialized(binding)

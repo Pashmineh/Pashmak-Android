@@ -9,7 +9,7 @@
             type="app.pashmak.com.pashmak.data.model.home.Event"/>
         <variable
             name="viewModel"
-            type="app.pashmak.com.pashmak.ui.main.MainViewModel"/>
+            type="app.pashmak.com.pashmak.ui.main.home.HomeViewModel"/>
         <variable
             name="position"
             type="Integer"/>

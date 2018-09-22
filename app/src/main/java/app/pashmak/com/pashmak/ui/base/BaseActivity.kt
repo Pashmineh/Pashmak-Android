@@ -2,6 +2,7 @@ package app.pashmak.com.pashmak.ui.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,16 +17,8 @@ import javax.inject.Inject
  * @param B A Binding class that inherited from [ViewDataBinding], will be used for creating View of this activity
  */
 abstract class BaseActivity<V : BaseViewModel, B : ViewDataBinding> : AppCompatActivity(), BaseView<V, B> {
-    /*override lateinit var binding: B*/
 
-
-    /*, HasSupportFragmentInjector
-
-    @Inject
-    lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
-
-    override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector*/
-
+    override lateinit var binding: B
 
     @Inject
     override lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -43,6 +36,9 @@ abstract class BaseActivity<V : BaseViewModel, B : ViewDataBinding> : AppCompatA
         // we should inject dependencies before invoking super.onCreate()
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
+        binding = DataBindingUtil.setContentView(this, layoutId)
+
+
         binding.setLifecycleOwner(this)
 
         // set viewModel as an observer to this activity lifecycle events

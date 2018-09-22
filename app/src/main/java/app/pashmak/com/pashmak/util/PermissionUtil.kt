@@ -40,7 +40,7 @@ class PermissionUtil @Inject constructor() {
      * @param permissions desired permissions to request grant
      * @param callback callback lambda function needed to send the result back through it
      */
-    fun request(fragment: Fragment, vararg permissions: String, callback: (grantedPermissions: List<String>, deniedPermissions: List<String>) -> Unit) {
+    fun request(fragment: Fragment, permissions: Array<String>, callback: (grantedPermissions: List<String>, deniedPermissions: List<String>) -> Unit) {
         if (permissions.isEmpty()) return
         this.callback = callback
 

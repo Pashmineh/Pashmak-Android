@@ -1,4 +1,4 @@
-package app.pashmak.com.pashmak.ui.main
+package app.pashmak.com.pashmak.ui.main.home
 
 import android.text.format.DateUtils
 import android.util.Log
@@ -15,24 +15,24 @@ import app.pashmak.com.pashmak.data.source.preference.AppPreferencesHelper
 import app.pashmak.com.pashmak.domain.home.CheckInUseCase
 import app.pashmak.com.pashmak.domain.home.HomeDataUseCase
 import app.pashmak.com.pashmak.ui.base.BaseViewModel
-import app.pashmak.com.pashmak.util.*
+import app.pashmak.com.pashmak.util.PermissionUtil
+import app.pashmak.com.pashmak.util.beacon.PashmakBeaconUtil
+import app.pashmak.com.pashmak.util.getAvatarUrl
 import app.pashmak.com.pashmak.util.providers.BaseResourceProvider
 import javax.inject.Inject
-import app.pashmak.com.pashmak.util.livedata.Event as EventLiveData
-import app.pashmak.com.pashmak.util.beacon.PashmakBeaconUtil
 
-
-class MainViewModel
-@Inject constructor(
-        private val homeDataUseCase: HomeDataUseCase,
-        private val preferencesHelper: AppPreferencesHelper,
-        private val checkInUseCase: CheckInUseCase,
-        private val resourceProvider: BaseResourceProvider,
-        val pashmakBeaconUtil: PashmakBeaconUtil,
-        val permissionUtil: PermissionUtil,
-        val viewState: MainViewState
-) : BaseViewModel() {
-
+class HomeViewModel
+    @Inject constructor(
+            private val homeDataUseCase: HomeDataUseCase,
+            private val preferencesHelper: AppPreferencesHelper,
+            private val checkInUseCase: CheckInUseCase,
+            private val resourceProvider: BaseResourceProvider,
+            val pashmakBeaconUtil: PashmakBeaconUtil,
+            val permissionUtil: PermissionUtil,
+            val viewState: HomeViewState
+    )
+    : BaseViewModel()
+{
     companion object {
 
         const val REQUEST_CHECK_LOCATION_SETTINGS = 232
@@ -42,7 +42,7 @@ class MainViewModel
 
 
     val eventListLiveData: MutableLiveData<List<Event>> = MutableLiveData()
-    val settingsLiveData: MutableLiveData<EventLiveData<Boolean>> = MutableLiveData()
+    val settingsLiveData: MutableLiveData<app.pashmak.com.pashmak.util.livedata.Event<Boolean>> = MutableLiveData()
     val messageLiveData: MutableLiveData<String> = MutableLiveData()
 
 
@@ -71,11 +71,11 @@ class MainViewModel
     }
 
     fun prepareCheckIn() {
-        activityAction { permissionUtil.request(it, arrayOf(GPS_PERMISSION), this::onPermissionResponse) }
+        fragmentAction { permissionUtil.request(it, arrayOf(GPS_PERMISSION), this::onPermissionResponse) }
     }
 
     fun checkBeaconState() {
-        activityAction{ pashmakBeaconUtil.checkMyBeacon(it, this::onBeaconFound, this::onFindingBeaconFailed) }
+        fragmentAction{ pashmakBeaconUtil.checkMyBeacon(it, this::onBeaconFound, this::onFindingBeaconFailed) }
         viewState.isLoading.value = true
     }
 
@@ -122,7 +122,7 @@ class MainViewModel
 
     private fun onPermissionResponse(grantedPermissions: List<String>, deniedPermissions: List<String>) {
         if (grantedPermissions.contains(GPS_PERMISSION)) {
-            settingsLiveData.value = EventLiveData(true)
+            settingsLiveData.value = app.pashmak.com.pashmak.util.livedata.Event(true)
         }
     }
 }

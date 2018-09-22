@@ -14,6 +14,7 @@ import app.pashmak.com.pashmak.util.BEACON_ADDRESS
 import javax.inject.Inject
 import android.bluetooth.le.ScanFilter
 import android.bluetooth.le.ScanSettings
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 
 
@@ -33,7 +34,14 @@ class PashmakBeaconUtil
     private lateinit var mScanCallback: ScanCallback
 
     fun checkMyBeacon(activity: FragmentActivity, onBeaconFound: () -> Unit, onFindingFailed: (hasSettingsIssue: Boolean) -> Unit) {
+        initClass(activity, null, onBeaconFound, onFindingFailed)
+    }
 
+    fun checkMyBeacon(fragment: Fragment, onBeaconFound: () -> Unit, onFindingFailed: (hasSettingsIssue: Boolean) -> Unit) {
+        initClass(null, fragment, onBeaconFound, onFindingFailed)
+    }
+
+    private fun initClass(activity: FragmentActivity?, fragment: Fragment?, onBeaconFound: () -> Unit, onFindingFailed: (hasSettingsIssue: Boolean) -> Unit){
         this.onBeaconFound = onBeaconFound
         this.onFindingFailed = onFindingFailed
 
@@ -42,7 +50,8 @@ class PashmakBeaconUtil
             return
         } else if (!bluetoothAdapter.isEnabled) {
             val enableBtIntent = Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE)
-            activity.startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT)
+            activity?.startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT)
+            fragment?.startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT)
         } else {
             findBeacon()
         }

@@ -5,7 +5,7 @@ import androidx.recyclerview.widget.RecyclerView
 import app.pashmak.com.pashmak.BR
 import app.pashmak.com.pashmak.data.model.home.Event
 import app.pashmak.com.pashmak.databinding.ItemEventBinding
-import app.pashmak.com.pashmak.ui.main.MainViewModel
+import app.pashmak.com.pashmak.ui.main.home.HomeViewModel
 
 class EventViewHolder: RecyclerView.ViewHolder
 {
@@ -14,7 +14,7 @@ class EventViewHolder: RecyclerView.ViewHolder
     constructor(binding: ItemEventBinding): super(binding.root){ this.binding = binding }
     constructor(view: View): super(view)
 
-    fun bind(position: Int, item: Event?, viewModel: MainViewModel){
+    fun bind(position: Int, item: Event?, viewModel: HomeViewModel){
         binding?.setVariable(BR.viewModel, viewModel)
         binding?.setVariable(BR.item, item)
         binding?.setVariable(BR.position, position)

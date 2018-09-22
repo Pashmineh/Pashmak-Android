@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -15,6 +16,7 @@ import javax.inject.Inject
 
 abstract class BaseFragment<V : BaseViewModel, B : ViewDataBinding> : Fragment(), BaseView<V, B> {
 
+    override lateinit var binding: B
 
     @Inject
     override lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -43,7 +45,7 @@ abstract class BaseFragment<V : BaseViewModel, B : ViewDataBinding> : Fragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // initialize binding
-//        binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
+        binding = DataBindingUtil.inflate(inflater, layoutId, container, false)
         binding.setLifecycleOwner(this)
 
         // set viewModel as an observer to this activity lifecycle events

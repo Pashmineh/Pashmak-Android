@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import app.pashmak.com.pashmak.R
 import app.pashmak.com.pashmak.data.model.home.Event
 import app.pashmak.com.pashmak.databinding.ItemEventBinding
-import app.pashmak.com.pashmak.ui.main.MainViewModel
+import app.pashmak.com.pashmak.ui.main.home.HomeViewModel
 
 class EventListAdapter(
         private var items: List<Event>,
-        private val viewModel: MainViewModel
+        private val viewModel: HomeViewModel
 ) : RecyclerView.Adapter<EventViewHolder>() {
 
     companion object {

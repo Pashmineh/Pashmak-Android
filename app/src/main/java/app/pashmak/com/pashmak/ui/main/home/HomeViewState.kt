@@ -1,4 +1,4 @@
-package app.pashmak.com.pashmak.ui.main
+package app.pashmak.com.pashmak.ui.main.home
 
 import android.graphics.drawable.Drawable
 import app.pashmak.com.pashmak.R
@@ -8,7 +8,7 @@ import app.pashmak.com.pashmak.util.livedata.NonNullLiveData
 import app.pashmak.com.pashmak.util.providers.BaseResourceProvider
 import javax.inject.Inject
 
-class MainViewState
+class HomeViewState
 @Inject constructor(private val resourceProvider: BaseResourceProvider)
 {
 
