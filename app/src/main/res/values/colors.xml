@@ -6,6 +6,7 @@
 
 
     <color name="White">#FFFFFF</color>
+    <color name="White_smoke">#f6f6f6</color>
     <color name="Platinium">#e8e8e8</color>
     <color name="Ash_grey">#bababa</color>
     <color name="Timber_wolf">#d8d8d8</color>
