@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/vector_home"
+        app:showAsAction="always"
+        android:title="home"/>
+    <item
+        android:id="@+id/like"
+        android:icon="@drawable/vector_like"
+        app:showAsAction="always"
+        android:title="Polling"/>
+    <item
+        android:id="@+id/messages"
+        android:icon="@drawable/vector_mail"
+        app:showAsAction="always"
+        android:title="Messages"/>
+    <item
+        android:id="@+id/currency"
+        android:icon="@drawable/vector_currency"
+        app:showAsAction="always"
+        android:title="Currency"/>
+
+</menu>

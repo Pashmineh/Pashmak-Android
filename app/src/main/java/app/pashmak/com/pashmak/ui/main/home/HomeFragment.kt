@@ -23,6 +23,13 @@ import com.google.android.gms.location.LocationSettingsStatusCodes
 
 class HomeFragment: BaseFragment<HomeViewModel, FragmentHomeBinding>() {
 
+    companion object {
+
+        const val TAG = "HomeFragment"
+
+        fun newInstance() = HomeFragment()
+    }
+
     override val viewModel: HomeViewModel by getLazyViewModel(ViewModelScope.FRAGMENT)
     override val layoutId: Int get() = R.layout.fragment_home
 

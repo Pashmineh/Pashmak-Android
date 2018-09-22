@@ -7,8 +7,16 @@ import app.pashmak.com.pashmak.util.livedata.Event as EventLiveData
 
 class MainViewModel
 @Inject constructor(
-
+        private val navigator: MainNavigator
 ) : BaseViewModel() {
 
+    fun openHome() = activityAction{ navigator.openHomeFragment(it) }
 
+    fun openMessages() {}
+
+    fun openPolling() {}
+
+    fun openEnterExit() {}
+
+    fun openTransactions() {}
 }

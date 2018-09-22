@@ -17,4 +17,11 @@
     <string name="register_checkin">ثبت ورود</string>
 
     <string name="login_shared_element_name">pashmak_logo</string>
+
+    <string name="tab_home">خانه</string>
+    <string name="tab_messages">پیام‌ها</string>
+    <string name="tab_polling">نظرسنجی</string>
+    <string name="tab_enter_exit">ترددها</string>
+    <string name="tab_transactions">تراکنش‌ها</string>
+
 </resources>
