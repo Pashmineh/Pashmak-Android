@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/shape_polling_candid_background_normal"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:padding="2dp">
+
+    <View
+        android:id="@+id/template_img_polling"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/shape_circle_template"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <View
+        android:id="@+id/template_txt_title"
+        android:layout_width="80dp"
+        android:layout_height="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintRight_toLeftOf="@+id/template_img_polling"
+        app:layout_constraintTop_toTopOf="@+id/template_img_polling"
+        app:layout_constraintBottom_toBottomOf="@+id/template_img_polling"
+        android:background="@color/Ash_grey"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,7 +45,32 @@
             android:paddingEnd="8dp"
             android:adapter="@{adapter}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            isTransparent="@{viewModel.isLoading}"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/frame_shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:shimmer_duration="800"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/template_poll"/>
+                <include layout="@layout/template_poll"/>
+                <include layout="@layout/template_poll"/>
+                <include layout="@layout/template_poll"/>
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

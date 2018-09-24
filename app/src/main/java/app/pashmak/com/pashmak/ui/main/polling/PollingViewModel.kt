@@ -8,6 +8,7 @@ import app.pashmak.com.pashmak.data.model.response.ErrorResponse
 import app.pashmak.com.pashmak.data.model.response.SuccessResponse
 import app.pashmak.com.pashmak.domain.polling.GetPollsUseCase
 import app.pashmak.com.pashmak.ui.base.BaseViewModel
+import app.pashmak.com.pashmak.util.livedata.NonNullLiveData
 import javax.inject.Inject
 
 class PollingViewModel
@@ -17,9 +18,11 @@ class PollingViewModel
     : BaseViewModel()
 {
 
+    val isLoading: NonNullLiveData<Boolean> = NonNullLiveData(false)
     val pollListLiveData: MutableLiveData<List<PollModel>> = MutableLiveData()
 
     fun getPolls(){
+        isLoading.value = true
         getPollsUseCase.execute(compositeDisposable, this::onGetPollResponse)
     }
 
@@ -29,8 +32,18 @@ class PollingViewModel
     }
 
     private fun onGetPollResponse(response: APIResponse<List<PollModel>>){
+
+        isLoading.value = false
+
         when(response){
             is SuccessResponse -> {
+                val itemList = response.value
+                for(model in itemList){
+                    model.myVoteCount = 0
+                    for(item in model.pollItemSet){
+                        if(item.voted) model.myVoteCount++
+                    }
+                }
                 pollListLiveData.value = response.value
             }
             is ErrorResponse -> {}

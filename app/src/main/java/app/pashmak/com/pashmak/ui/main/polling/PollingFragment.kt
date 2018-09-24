@@ -1,5 +1,6 @@
 package app.pashmak.com.pashmak.ui.main.polling
 
+import android.view.View
 import androidx.lifecycle.Observer
 import app.pashmak.com.pashmak.R
 import app.pashmak.com.pashmak.data.model.polling.PollItem
@@ -48,9 +49,21 @@ class PollingFragment: BaseFragment<PollingViewModel, FragmentPollingBinding>()
 //        }
     }
 
+    override fun onResume() {
+        super.onResume()
+        binding.frameShimmer.startShimmer()
+    }
+
+    override fun onPause() {
+        binding.frameShimmer.stopShimmer()
+        super.onPause()
+    }
+
     private fun subscribeLiveData(){
         viewModel.pollListLiveData.observe(this, Observer {
             binding.adapter?.swapItems(it)
+            binding.frameShimmer.stopShimmer()
+            binding.frameShimmer.visibility = View.GONE
         })
     }
 }

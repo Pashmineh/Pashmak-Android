@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="java.lang.Integer" />
         <variable
             name="viewModel"
             type="app.pashmak.com.pashmak.ui.main.polling.PollingViewModel"/>
@@ -86,7 +87,10 @@
                 app:layout_constraintBottom_toBottomOf="@+id/txt_poll_left"
                 app:layout_constraintRight_toLeftOf="@+id/txt_poll_left"
                 android:textColor="@color/Dark_tangerine"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_small"
+                android:layout_marginRight="3dp"
+                android:text="@{String.format(@string/vote_merge, item.getLeftVote())}"/>
+
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_poll_total"
@@ -116,7 +120,10 @@
                 app:layout_constraintBottom_toBottomOf="@+id/txt_poll_total"
                 app:layout_constraintRight_toLeftOf="@+id/txt_poll_total"
                 android:textColor="@color/Dark_tangerine"
-                android:textSize="@dimen/text_size_small" />
+                android:textSize="@dimen/text_size_small"
+                android:layout_marginRight="3dp"
+                android:text="@{String.format(@string/person_merge, item.totalVote)}"/>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

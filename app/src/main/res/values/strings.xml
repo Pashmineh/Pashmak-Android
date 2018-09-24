@@ -26,5 +26,7 @@
 
     <string name="poll_item_left">آرا باقی مانده شما:</string>
     <string name="poll_total_value">آراء اخذ شده:</string>
+    <string name="vote_merge">%d رای</string>
+    <string name="person_merge">%d نفر</string>
 
 </resources>
