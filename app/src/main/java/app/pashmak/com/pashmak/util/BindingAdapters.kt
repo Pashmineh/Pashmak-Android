@@ -4,8 +4,10 @@ import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import app.pashmak.com.pashmak.app.GlideApp
@@ -63,5 +65,12 @@ object BindingAdapters {
     @BindingAdapter("changeBorderColor")
     fun changeBorderColor(imageView: CircleImageView, color: Int) {
         imageView.borderColor = color
+    }
+
+
+    @JvmStatic
+    @BindingAdapter("isSelectedView")
+    fun changeViewSelectionState(view: ViewGroup, isSelected: Boolean) {
+        view.isSelected = isSelected
     }
 }

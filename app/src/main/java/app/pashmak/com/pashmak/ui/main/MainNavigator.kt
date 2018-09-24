@@ -4,6 +4,7 @@ import androidx.fragment.app.FragmentActivity
 import app.pashmak.com.pashmak.R
 import app.pashmak.com.pashmak.ui.base.BaseNavigator
 import app.pashmak.com.pashmak.ui.main.home.HomeFragment
+import app.pashmak.com.pashmak.ui.main.polling.PollingFragment
 import javax.inject.Inject
 
 class MainNavigator @Inject constructor(): BaseNavigator
@@ -11,7 +12,14 @@ class MainNavigator @Inject constructor(): BaseNavigator
     fun openHomeFragment(activity: FragmentActivity){
         activity.supportFragmentManager
                 .beginTransaction()
-                .add(R.id.container, HomeFragment.newInstance(), HomeFragment.TAG)
+                .replace(R.id.container, HomeFragment.newInstance(), HomeFragment.TAG)
+                .commitAllowingStateLoss()
+    }
+
+    fun openPollingFragment(activity: FragmentActivity){
+        activity.supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.container, PollingFragment.newInstance(), PollingFragment.TAG)
                 .commitAllowingStateLoss()
     }
 }

@@ -10,5 +10,5 @@ data class PollModel
         @SerializedName("imgsrc") val imgsrc: String,
         @SerializedName("question") val question: String,
         @SerializedName("totalVote") val totalVote: Int,
-        @SerializedName("pollItemSet") val pollItemSet: List<PollItem>
+        @SerializedName("itemDTOS") val pollItemSet: List<PollItem>
 )

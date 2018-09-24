@@ -6,5 +6,7 @@ data class PollItem(
         @SerializedName("id") val id: Int,
         @SerializedName("imgsrc") val imgsrc: String,
         @SerializedName("number") val number: Int,
-        @SerializedName("title") val title: String
-        )
+        @SerializedName("title") val title: String,
+        @SerializedName("voted") val voted: Boolean
+
+)

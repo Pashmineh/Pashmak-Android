@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="app.pashmak.com.pashmak.ui.main.polling.PollingViewModel"/>
+        <variable
+            name="item"
+            type="app.pashmak.com.pashmak.data.model.polling.PollModel"/>
+        <variable
+            name="adapter"
+            type="app.pashmak.com.pashmak.ui.base.adapter.BaseAdapter"/>
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/White"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="2dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_polling_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/txt_polling_title"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_polling_title"
+                app:layout_constraintRight_toRightOf="parent"
+                app:srcCompat="@drawable/vector_polling" />
+
+            <TextView
+                android:id="@+id/txt_polling_title"
+                style="@style/TextViewStyle"
+                android:layout_width="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/img_polling_title"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:textSize="@dimen/text_size_large"
+                android:layout_marginRight="10dp"
+                android:text="@{item.question}"
+                tools:text="@string/polling_question"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_candids"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/txt_polling_title"
+                android:adapter="@{adapter}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_poll_left"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                app:layout_constraintTop_toTopOf="@+id/txt_poll_left"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_poll_left"
+                app:layout_constraintRight_toRightOf="parent"
+                app:srcCompat="@drawable/vector_pollitemsleft"/>
+
+            <TextView
+                android:id="@+id/txt_poll_left"
+                style="@style/TextViewStyle"
+                app:layout_constraintTop_toBottomOf="@+id/list_candids"
+                app:layout_constraintRight_toLeftOf="@+id/img_poll_left"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="4dp"
+                android:textColor="@color/Ash_grey"
+                android:textSize="@dimen/text_size_small"
+                android:text="@string/poll_item_left"/>
+
+            <TextView
+                android:id="@+id/txt_poll_left_value"
+                style="@style/TextViewStyle"
+                app:layout_constraintTop_toTopOf="@+id/txt_poll_left"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_poll_left"
+                app:layout_constraintRight_toLeftOf="@+id/txt_poll_left"
+                android:textColor="@color/Dark_tangerine"
+                android:textSize="@dimen/text_size_small" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_poll_total"
+                android:layout_width="9dp"
+                android:layout_height="9dp"
+                app:layout_constraintTop_toTopOf="@+id/txt_poll_total"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_poll_total"
+                app:layout_constraintRight_toRightOf="parent"
+                app:srcCompat="@drawable/vector_person_48dp"
+                android:tint="@color/Davy_grey"
+                app:tint="@color/Davy_grey"/>
+
+            <TextView
+                android:id="@+id/txt_poll_total"
+                style="@style/TextViewStyle"
+                app:layout_constraintTop_toBottomOf="@+id/txt_poll_left"
+                app:layout_constraintRight_toRightOf="@+id/txt_poll_left"
+                android:layout_marginTop="3dp"
+                android:textColor="@color/Ash_grey"
+                android:textSize="@dimen/text_size_small"
+                android:text="@string/poll_total_value"/>
+
+            <TextView
+                android:id="@+id/txt_poll_total_value"
+                style="@style/TextViewStyle"
+                app:layout_constraintTop_toTopOf="@+id/txt_poll_total"
+                app:layout_constraintBottom_toBottomOf="@+id/txt_poll_total"
+                app:layout_constraintRight_toLeftOf="@+id/txt_poll_total"
+                android:textColor="@color/Dark_tangerine"
+                android:textSize="@dimen/text_size_small" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

@@ -24,6 +24,7 @@
     <string name="tab_enter_exit">ترددها</string>
     <string name="tab_transactions">تراکنش‌ها</string>
 
-    <string name="polling_question">به نظر شما چه کسانی باید عضو هیات مدیره پشمک در دوره پاییز باشند؟</string>
+    <string name="poll_item_left">آرا باقی مانده شما:</string>
+    <string name="poll_total_value">آراء اخذ شده:</string>
 
 </resources>

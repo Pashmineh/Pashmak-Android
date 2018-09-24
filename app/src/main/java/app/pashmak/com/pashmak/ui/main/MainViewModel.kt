@@ -14,7 +14,7 @@ class MainViewModel
 
     fun openMessages() {}
 
-    fun openPolling() {}
+    fun openPolling() = activityAction{ navigator.openPollingFragment(it) }
 
     fun openEnterExit() {}
 
