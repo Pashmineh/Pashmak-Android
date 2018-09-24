@@ -8,6 +8,9 @@
             name="viewModel"
             type="app.pashmak.com.pashmak.ui.main.polling.PollingViewModel"/>
         <variable
+            name="pollPosition"
+            type="Integer"/>
+        <variable
             name="item"
             type="app.pashmak.com.pashmak.data.model.polling.PollItem"/>
     </data>
@@ -18,7 +21,7 @@
         android:layout_marginTop="8dp"
         android:padding="3dp"
         android:background="@drawable/selector_polling_candid"
-        android:onClick="@{() -> viewModel.onVoteClick(item)}"
+        android:onClick="@{() -> viewModel.onVoteClick(pollPosition, item)}"
         isSelectedView="@{item.voted}">
 
         <app.pashmak.com.pashmak.ui.customviews.CircleImageView

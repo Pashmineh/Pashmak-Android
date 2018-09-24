@@ -21,7 +21,7 @@ interface APIsWithToken{
     @GET("/api/polls")
     fun getPolls(): Flowable<List<PollModel>>
 
-    @DELETE("/api/polls/vote")
+    @HTTP(method = "DELETE", path = "/api/polls/vote", hasBody = true)
     fun removeVote(@Body voteModel: VoteModel): Flowable<List<PollModel>>
 
     @POST("/api/polls/vote")

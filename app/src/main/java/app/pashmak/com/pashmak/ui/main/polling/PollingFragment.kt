@@ -34,11 +34,15 @@ class PollingFragment: BaseFragment<PollingViewModel, FragmentPollingBinding>()
                         emptyList(),
                         viewModel)
                 {
+                    val pollPosition = it
                     adapter = BaseAdapter<PollItem, ItemPollingCandidBinding>(
                             R.layout.item_polling_candid,
                             item!!.pollItemSet,
                             viewModel
                     )
+                    {
+                        this.pollPosition = pollPosition
+                    }
                 }
 
         subscribeLiveData()
