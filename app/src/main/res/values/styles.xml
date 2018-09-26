@@ -3,7 +3,7 @@
     <!-- Base application theme. -->
     <style name="BaseTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="colorPrimary">@color/Timber_wolf</item>
-        <item name="colorPrimaryDark">@color/Timber_wolf</item>
+        <item name="colorPrimaryDark">@color/Dark_tangerine</item>
         <item name="colorAccent">@color/Dark_tangerine</item>
         <item name="colorControlNormal">@color/Ash_grey</item>
 
@@ -34,6 +34,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/Black</item>
         <item name="android:textSize">@dimen/text_size_medium</item>
+        <item name="android:fontFamily">@font/sans_regular</item>
     </style>
 
 

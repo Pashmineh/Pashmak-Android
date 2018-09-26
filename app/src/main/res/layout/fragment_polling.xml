@@ -33,6 +33,8 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="@string/tab_polling"
+                    android:fontFamily="@font/sans_bold"
+                    android:textColor="@color/White"
                     android:textSize="@dimen/text_size_large" />
 
             </androidx.appcompat.widget.Toolbar>

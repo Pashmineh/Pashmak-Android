@@ -7,8 +7,12 @@ import android.text.TextWatcher
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import app.pashmak.com.pashmak.app.GlideApp
@@ -30,6 +34,12 @@ object BindingAdapters {
             }
         })
 
+    }
+
+    @JvmStatic
+    @BindingAdapter("srcVector")
+    fun setVectorResource(view: ImageView, @DrawableRes drawable: Int) {
+        view.setImageResource(drawable)
     }
 
     @JvmStatic
@@ -80,5 +90,17 @@ object BindingAdapters {
     fun setClipLevel(view: View, level: Int) {
         if(view.background is ClipDrawable)
             view.background.level = level
+    }
+
+    @JvmStatic
+    @BindingAdapter("backgroundColorRes")
+    fun setBackgroundColor(view: View, colorRes: Int) {
+        view.setBackgroundResource(colorRes)
+    }
+
+    @JvmStatic
+    @BindingAdapter("textColorRes")
+    fun setTextColorRes(view: TextView, colorRes: Int) {
+        view.setTextColor(ContextCompat.getColor(view.context, colorRes))
     }
 }
