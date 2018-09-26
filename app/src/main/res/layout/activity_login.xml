@@ -26,35 +26,46 @@
             app:srcCompat="@drawable/ic_pashmak"
             android:transitionName="@string/login_shared_element_name"/>
 
-        <EditText
-            android:id="@+id/edt_mobile"
-            style="@style/EditTextStyle"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_mobile"
+            style="@style/TextInputLayoutStyle"
             app:layout_constraintTop_toBottomOf="@+id/__img_logo_top"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="52dp"
-            android:gravity="center"
             android:hint="@string/mobile_phone"
-            android:inputType="phone"
-            android:maxLength="11"
-            bindValue="@{viewModel.phoneValue}"
-            isTransparent="@{viewModel.isLoading}"/>
+            android:layout_marginTop="52dp">
 
-        <EditText
-            android:id="@+id/edt_national_code"
-            style="@style/EditTextStyle"
-            app:layout_constraintTop_toBottomOf="@+id/edt_mobile"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_mobile"
+                style="@style/EditTextStyle"
+                android:inputType="phone"
+                android:maxLength="11"
+                bindValue="@{viewModel.phoneValue}"
+                isTransparent="@{viewModel.isLoading}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_national_code"
+            style="@style/TextInputLayoutStyle"
+            app:layout_constraintTop_toBottomOf="@+id/input_mobile"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="13dp"
-            android:gravity="center"
             android:hint="@string/national_code"
-            android:inputType="numberPassword"
-            android:maxLength="10"
-            bindValue="@{viewModel.nationalCodeValue}"
-            isTransparent="@{viewModel.isLoading}"/>
+            android:layout_marginTop="13dp">
 
-        <androidx.appcompat.widget.AppCompatButton
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_national_code"
+                style="@style/EditTextStyle"
+                android:inputType="numberPassword"
+                android:maxLength="10"
+                bindValue="@{viewModel.nationalCodeValue}"
+                isTransparent="@{viewModel.isLoading}"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.button.MaterialButton
             style="@style/ButtonStyle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
