@@ -69,7 +69,7 @@
                     app:layout_constraintLeft_toRightOf="@+id/img_home"
                     app:layout_constraintRight_toLeftOf="@+id/img_polling"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:srcCompat="@drawable/vector_mail"
+                    app:srcCompat="@drawable/vector_inbox"
                     android:onClick="@{() -> viewModel.openMessages()}"/>
 
                 <TextView
@@ -90,7 +90,7 @@
                     app:layout_constraintLeft_toRightOf="@+id/img_messages"
                     app:layout_constraintRight_toLeftOf="@+id/img_enter_exit"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:srcCompat="@drawable/vector_like"
+                    app:srcCompat="@drawable/vector_poll"
                     android:onClick="@{() -> viewModel.openPolling()}"/>
 
                 <TextView
@@ -111,7 +111,7 @@
                     app:layout_constraintLeft_toRightOf="@+id/img_polling"
                     app:layout_constraintRight_toLeftOf="@+id/img_transactions"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
-                    app:srcCompat="@drawable/vector_transactions"
+                    app:srcCompat="@drawable/vector_checkin"
                     android:onClick="@{() -> viewModel.openEnterExit()}"/>
 
                 <TextView
@@ -134,7 +134,7 @@
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread_inside"
                     android:layout_marginRight="15dp"
-                    app:srcCompat="@drawable/vector_currency"
+                    app:srcCompat="@drawable/vector_transaction"
                     android:onClick="@{() -> viewModel.openTransactions()}"/>
 
                 <TextView

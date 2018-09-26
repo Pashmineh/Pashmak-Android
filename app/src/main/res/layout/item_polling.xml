@@ -67,7 +67,7 @@
                 app:layout_constraintTop_toTopOf="@+id/txt_poll_left"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_poll_left"
                 app:layout_constraintRight_toRightOf="parent"
-                app:srcCompat="@drawable/vector_pollitemsleft"/>
+                app:srcCompat="@drawable/vector_poll_vote_left"/>
 
             <TextView
                 android:id="@+id/txt_poll_left"
@@ -99,7 +99,7 @@
                 app:layout_constraintTop_toTopOf="@+id/txt_poll_total"
                 app:layout_constraintBottom_toBottomOf="@+id/txt_poll_total"
                 app:layout_constraintRight_toRightOf="parent"
-                app:srcCompat="@drawable/vector_person_48dp"
+                app:srcCompat="@drawable/vector_poll_count"
                 android:tint="@color/Davy_grey"
                 app:tint="@color/Davy_grey"/>
 
