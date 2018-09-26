@@ -26,6 +26,8 @@ import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
 
 
+
+
 class PushService : FirebaseMessagingService() {
 
     companion object {
@@ -56,6 +58,8 @@ class PushService : FirebaseMessagingService() {
                 .setContentTitle(remoteMessage?.notification?.title ?: "")
                 .setContentText(remoteMessage?.notification?.body ?: "")
                 .setSmallIcon(R.mipmap.ic_launcher)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setAutoCancel(true)
                 .build()
 
         val manager = NotificationManagerCompat.from(applicationContext)
@@ -66,4 +70,6 @@ class PushService : FirebaseMessagingService() {
 //        if (remoteMessage?.data?.size?.let { it > 0 } == true) {
 //        }
     }
+
+
 }
