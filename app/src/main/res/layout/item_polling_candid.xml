@@ -13,6 +13,9 @@
         <variable
             name="item"
             type="app.pashmak.com.pashmak.data.model.polling.PollItem"/>
+        <variable
+            name="clipLevel"
+            type="Integer"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -23,6 +26,17 @@
         android:background="@drawable/selector_polling_candid"
         android:onClick="@{() -> viewModel.onVoteClick(pollPosition, item)}"
         isSelectedView="@{item.voted}">
+
+        <View
+            android:id="@+id/clip_background"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/img_candid"
+            android:background="@drawable/clip_polling_candid_filled"
+            clipLevel="@{clipLevel}"/>
 
         <app.pashmak.com.pashmak.ui.customviews.CircleImageView
             android:id="@+id/img_candid"

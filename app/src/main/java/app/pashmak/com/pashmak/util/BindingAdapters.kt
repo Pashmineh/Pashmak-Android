@@ -1,5 +1,6 @@
 package app.pashmak.com.pashmak.util
 
+import android.graphics.drawable.ClipDrawable
 import android.graphics.drawable.Drawable
 import android.text.Editable
 import android.text.TextWatcher
@@ -72,5 +73,12 @@ object BindingAdapters {
     @BindingAdapter("isSelectedView")
     fun changeViewSelectionState(view: ViewGroup, isSelected: Boolean) {
         view.isSelected = isSelected
+    }
+
+    @JvmStatic
+    @BindingAdapter("clipLevel")
+    fun setClipLevel(view: View, level: Int) {
+        if(view.background is ClipDrawable)
+            view.background.level = level
     }
 }

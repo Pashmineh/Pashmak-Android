@@ -35,6 +35,7 @@ class PollingFragment: BaseFragment<PollingViewModel, FragmentPollingBinding>()
                         viewModel)
                 {
                     val pollPosition = it
+                    val totalVote = item?.totalVote ?: 1
                     adapter = BaseAdapter<PollItem, ItemPollingCandidBinding>(
                             R.layout.item_polling_candid,
                             item!!.pollItemSet,
@@ -42,6 +43,7 @@ class PollingFragment: BaseFragment<PollingViewModel, FragmentPollingBinding>()
                     )
                     {
                         this.pollPosition = pollPosition
+                        this.clipLevel = if(item?.voted == true) (item!!.number.toFloat()/totalVote * 10000).toInt() else 0
                     }
                 }
 
