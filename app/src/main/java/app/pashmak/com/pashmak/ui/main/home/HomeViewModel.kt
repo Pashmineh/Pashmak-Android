@@ -6,13 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import app.pashmak.com.pashmak.R
 import app.pashmak.com.pashmak.data.model.home.Event
 import app.pashmak.com.pashmak.data.model.home.HomeData
-import app.pashmak.com.pashmak.data.model.home.checkin.CheckInResponse
-import app.pashmak.com.pashmak.data.model.home.checkin.CheckInType
+import app.pashmak.com.pashmak.data.model.checkin.CheckInResponse
+import app.pashmak.com.pashmak.data.model.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.response.APIResponse
 import app.pashmak.com.pashmak.data.model.response.ErrorResponse
 import app.pashmak.com.pashmak.data.model.response.SuccessResponse
 import app.pashmak.com.pashmak.data.source.preference.AppPreferencesHelper
-import app.pashmak.com.pashmak.domain.home.CheckInUseCase
+import app.pashmak.com.pashmak.domain.checkin.CheckInUseCase
 import app.pashmak.com.pashmak.domain.home.HomeDataUseCase
 import app.pashmak.com.pashmak.ui.base.BaseViewModel
 import app.pashmak.com.pashmak.util.PermissionUtil
@@ -111,7 +111,7 @@ class HomeViewModel
         viewState.isLoading.value = false
         when (response) {
             is SuccessResponse -> {
-                preferencesHelper.latestCheckIn = response.value.timeEpoch
+                preferencesHelper.latestCheckIn = response.value.checkInTimeValue
                 viewState.onSuccessfulCheckIn()
             }
             is ErrorResponse -> {

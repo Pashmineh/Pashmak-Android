@@ -1,11 +1,10 @@
 package app.pashmak.com.pashmak.data.source.cloud
 
 import app.pashmak.com.pashmak.data.model.home.HomeData
-import app.pashmak.com.pashmak.data.model.home.checkin.CheckInResponse
-import app.pashmak.com.pashmak.data.model.home.checkin.CheckInType
+import app.pashmak.com.pashmak.data.model.checkin.CheckInResponse
+import app.pashmak.com.pashmak.data.model.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.login.LoginRequest
 import app.pashmak.com.pashmak.data.model.login.LoginResponse
-import app.pashmak.com.pashmak.data.model.polling.PollModel
 import app.pashmak.com.pashmak.data.model.polling.VoteModel
 import app.pashmak.com.pashmak.data.restful.APIs
 import app.pashmak.com.pashmak.data.restful.APIsWithToken
@@ -23,6 +22,8 @@ class CloudRepository(private val apIs: APIs, private val apIsWithToken: APIsWit
     }
 
     override fun getHomeData(): Flowable<HomeData> = apIsWithToken.getHomeData()
+
+    override fun getCheckInList(): Flowable<List<CheckInResponse>> = apIsWithToken.getCheckInList()
 
     override fun checkin(checkInType: CheckInType): Flowable<CheckInResponse> = apIsWithToken.checkIn(checkInType)
 

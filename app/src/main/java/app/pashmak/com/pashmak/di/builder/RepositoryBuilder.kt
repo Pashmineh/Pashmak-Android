@@ -1,6 +1,8 @@
 package app.pashmak.com.pashmak.di.builder
 
 
+import app.pashmak.com.pashmak.data.repository.checkin.CheckInRepository
+import app.pashmak.com.pashmak.data.repository.checkin.CheckInRepositoryImpl
 import app.pashmak.com.pashmak.data.repository.home.HomeDataRepository
 import app.pashmak.com.pashmak.data.repository.home.HomeDataRepositoryImpl
 import app.pashmak.com.pashmak.data.repository.login.LoginRepository
@@ -21,4 +23,7 @@ interface RepositoryBuilder {
 
     @Binds
     fun bindPollingDataRepository(pollingDataRepositoryImpl: PollingDataRepositoryImpl): PollingDataRepository
+
+    @Binds
+    fun bindCheckInRepository(checkInRepositoryImpl: CheckInRepositoryImpl): CheckInRepository
 }

@@ -1,4 +1,4 @@
-package app.pashmak.com.pashmak.data.model.home.checkin
+package app.pashmak.com.pashmak.data.model.checkin
 
 import com.google.gson.annotations.SerializedName
 

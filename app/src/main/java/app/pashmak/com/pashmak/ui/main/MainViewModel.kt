@@ -16,7 +16,7 @@ class MainViewModel
 
     fun openPolling() = activityAction{ navigator.openPollingFragment(it) }
 
-    fun openEnterExit() {}
+    fun openCheckIn() = activityAction{ navigator.openCheckInFragment(it) }
 
     fun openTransactions() {}
 }

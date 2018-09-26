@@ -1,8 +1,8 @@
 package app.pashmak.com.pashmak.data.source.cloud
 
 import app.pashmak.com.pashmak.data.model.home.HomeData
-import app.pashmak.com.pashmak.data.model.home.checkin.CheckInResponse
-import app.pashmak.com.pashmak.data.model.home.checkin.CheckInType
+import app.pashmak.com.pashmak.data.model.checkin.CheckInResponse
+import app.pashmak.com.pashmak.data.model.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.login.LoginRequest
 import app.pashmak.com.pashmak.data.model.login.LoginResponse
 import app.pashmak.com.pashmak.data.model.polling.PollModel
@@ -20,6 +20,8 @@ interface BaseCloudRepository {
 
     fun getHomeData(): Flowable<HomeData>
 
+    fun getCheckInList(): Flowable<List<CheckInResponse>>
+
     fun checkin(checkInType: CheckInType): Flowable<CheckInResponse>
 
     fun getPollings(): Flowable<List<PollModel>>
@@ -27,5 +29,4 @@ interface BaseCloudRepository {
     fun vote(voteModel: VoteModel): Flowable<List<PollModel>>
 
     fun removeVote(voteModel: VoteModel): Flowable<List<PollModel>>
-
 }

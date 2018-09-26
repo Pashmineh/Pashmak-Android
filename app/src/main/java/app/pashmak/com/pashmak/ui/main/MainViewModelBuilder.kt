@@ -2,6 +2,7 @@ package app.pashmak.com.pashmak.ui.main
 
 import androidx.lifecycle.ViewModel
 import app.pashmak.com.pashmak.di.qualifier.viewmodel.ViewModelKey
+import app.pashmak.com.pashmak.ui.main.checkin.CheckInViewModel
 import app.pashmak.com.pashmak.ui.main.home.HomeViewModel
 import app.pashmak.com.pashmak.ui.main.polling.PollingViewModel
 import dagger.Binds
@@ -25,4 +26,9 @@ abstract class MainViewModelBuilder
     @IntoMap
     @ViewModelKey(PollingViewModel::class)
     abstract fun bindPollingViewModel(viewModel: PollingViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(CheckInViewModel::class)
+    abstract fun bindCheckInViewModel(viewModel: CheckInViewModel): ViewModel
 }

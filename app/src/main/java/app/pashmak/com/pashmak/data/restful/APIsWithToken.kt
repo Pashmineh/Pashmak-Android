@@ -1,8 +1,8 @@
 package app.pashmak.com.pashmak.data.restful
 
 import app.pashmak.com.pashmak.data.model.home.HomeData
-import app.pashmak.com.pashmak.data.model.home.checkin.CheckInResponse
-import app.pashmak.com.pashmak.data.model.home.checkin.CheckInType
+import app.pashmak.com.pashmak.data.model.checkin.CheckInResponse
+import app.pashmak.com.pashmak.data.model.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.polling.PollModel
 import app.pashmak.com.pashmak.data.model.polling.VoteModel
 import io.reactivex.Flowable
@@ -15,8 +15,11 @@ interface APIsWithToken{
     @GET("/api/home")
     fun getHomeData(): Flowable<HomeData>
 
+    @GET("/api/checkins")
+    fun getCheckInList(): Flowable<List<CheckInResponse>>
+
     @POST("/api/checkin")
-    fun checkIn(@Query("checkinType") type: CheckInType): Flowable<CheckInResponse>
+    fun checkIn(@Query("checkInType") type: CheckInType): Flowable<CheckInResponse>
 
     @GET("/api/polls")
     fun getPolls(): Flowable<List<PollModel>>
