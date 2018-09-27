@@ -25,19 +25,22 @@ class ScrollAwareFabBehavior: CoordinatorLayout.Behavior<ConstraintLayout>
         return super.onLayoutChild(parent, child, layoutDirection)
     }
 
-    override fun layoutDependsOn(parent: CoordinatorLayout, child: ConstraintLayout, dependency: View): Boolean {
-        return true
-    }
-
-    override fun onDependentViewChanged(parent: CoordinatorLayout, child: ConstraintLayout, dependency: View): Boolean {
-        return true
-    }
+//    override fun layoutDependsOn(parent: CoordinatorLayout, child: ConstraintLayout, dependency: View): Boolean {
+//        return true
+//    }
+//
+//    override fun onDependentViewChanged(parent: CoordinatorLayout, child: ConstraintLayout, dependency: View): Boolean {
+//        return true
+//    }
 
     override fun onStartNestedScroll(coordinatorLayout: CoordinatorLayout, child: ConstraintLayout, directTargetChild: View, target: View, axes: Int, type: Int): Boolean {
         return axes and ViewCompat.SCROLL_AXIS_VERTICAL != 0
     }
 
     override fun onNestedPreScroll(coordinatorLayout: CoordinatorLayout, child: ConstraintLayout, target: View, dx: Int, dy: Int, consumed: IntArray, type: Int) {
+        if(child.visibility != View.VISIBLE)
+            return
+
         if (dy > 0 && mDySinceDirectionChange < 0
                 || dy < 0 && mDySinceDirectionChange > 0) {
             mDySinceDirectionChange = 0

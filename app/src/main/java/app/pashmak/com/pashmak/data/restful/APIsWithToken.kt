@@ -19,7 +19,7 @@ interface APIsWithToken{
     fun getCheckInList(): Flowable<List<CheckInResponse>>
 
     @POST("/api/checkin")
-    fun checkIn(@Query("checkInType") type: CheckInType): Flowable<CheckInResponse>
+    fun checkIn(@Query("CheckinType") type: CheckInType): Flowable<CheckInResponse>
 
     @GET("/api/polls")
     fun getPolls(): Flowable<List<PollModel>>

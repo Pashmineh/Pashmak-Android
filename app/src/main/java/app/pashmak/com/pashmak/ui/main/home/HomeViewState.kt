@@ -21,8 +21,6 @@ class HomeViewState
     var paid: NonNullLiveData<String> = NonNullLiveData("0")
     var cycle: NonNullLiveData<String> = NonNullLiveData("")
 
-    val todayCheckInEnable: NonNullLiveData<Boolean> = NonNullLiveData(true)
-    val checkInButtonText: NonNullLiveData<String> = NonNullLiveData("")
     val isLoading: NonNullLiveData<Boolean> = NonNullLiveData(false)
 
     fun initialize(
@@ -31,11 +29,6 @@ class HomeViewState
     ){
         this.fullName = fullName
         this.avatarUrl = avatarUrl
-        setButtonText()
-    }
-
-    private fun setButtonText() {
-        checkInButtonText.value = if (todayCheckInEnable.value) resourceProvider.getString(R.string.register_checkin) else resourceProvider.getString(R.string.checkin_has_registered)
     }
 
     fun setHomeDataValues(data: HomeData){
@@ -44,10 +37,5 @@ class HomeViewState
             stateColor.value = resourceProvider.getColor(R.color.Ruddy)
         balance.value = resourceProvider.getString(R.string.number_toman, formatNumber(data.balance.balance))
         paid.value = resourceProvider.getString(R.string.total_paid_cycle, formatNumber(data.balance.paid))
-    }
-
-    fun onSuccessfulCheckIn(){
-        todayCheckInEnable.value = false
-        setButtonText()
     }
 }

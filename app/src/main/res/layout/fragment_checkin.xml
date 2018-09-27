@@ -44,7 +44,7 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:adapter="@{adapter}"
-            isTransparent="@{viewModel.isLoading}"
+            isTransparent="@{viewModel.pageLoading}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
@@ -60,7 +60,10 @@
             android:layout_marginBottom="65dp"
             app:layout_anchor="@+id/lst_checkin"
             app:layout_anchorGravity="left|bottom"
-            app:layout_behavior="app.pashmak.com.pashmak.ui.main.checkin.ScrollAwareFabBehavior">
+            app:layout_behavior="app.pashmak.com.pashmak.ui.main.checkin.ScrollAwareFabBehavior"
+            android:onClick="@{() -> viewModel.prepareCheckIn()}"
+            changeVisibility="@{viewModel.todayCheckInVisible}"
+            isTransparent="@{viewModel.pageLoading}">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_manual_checkin"
@@ -82,7 +85,6 @@
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/frame_shimmer"
@@ -112,6 +114,12 @@
                 <include layout="@layout/template_checkin"/>
             </LinearLayout>
         </com.facebook.shimmer.ShimmerFrameLayout>
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            changeVisibility="@{viewModel.checkInLoading}"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
