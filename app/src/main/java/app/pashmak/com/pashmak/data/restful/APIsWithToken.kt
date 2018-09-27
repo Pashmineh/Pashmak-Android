@@ -5,6 +5,7 @@ import app.pashmak.com.pashmak.data.model.checkin.CheckInResponse
 import app.pashmak.com.pashmak.data.model.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.polling.PollModel
 import app.pashmak.com.pashmak.data.model.polling.VoteModel
+import app.pashmak.com.pashmak.data.model.transaction.TransactionModel
 import io.reactivex.Flowable
 import retrofit2.http.*
 
@@ -29,4 +30,10 @@ interface APIsWithToken{
 
     @POST("/api/polls/vote")
     fun vote(@Body voteModel: VoteModel): Flowable<List<PollModel>>
+
+    @GET("/api/debts")
+    fun getDebtList(): Flowable<List<TransactionModel>>
+
+    @GET("/api/payments")
+    fun getPaymentList(): Flowable<List<TransactionModel>>
 }

@@ -16,6 +16,13 @@ class TransactionListFragment: BaseFragment<TransactionListViewModel, FragmentTr
     override val viewModel: TransactionListViewModel by getLazyViewModel(ViewModelScope.FRAGMENT)
     override val layoutId: Int get() = R.layout.fragment_transaction_list
 
+    override fun onViewInitialized(binding: FragmentTransactionListBinding) {
+        super.onViewInitialized(binding)
+        binding.viewModel = viewModel
+
+        viewModel.getDebtList()
+    }
+
     override fun onResume() {
         super.onResume()
         binding.frameShimmer.startShimmer()
