@@ -34,7 +34,10 @@ class MainTabViewState
                 mNavigator.openCheckInFragment(fragmentActivity)
                 checkInTintRes.value = R.color.Dark_tangerine
             }
-            MainTabEnum.TRANSACTIONS -> {}
+            MainTabEnum.TRANSACTIONS -> {
+                mNavigator.openTransactionListFragment(fragmentActivity)
+                transactionTintRes.value = R.color.Dark_tangerine
+            }
         }
 
         selectedTab = tab

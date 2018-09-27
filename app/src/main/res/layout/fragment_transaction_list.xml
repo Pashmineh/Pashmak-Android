@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="app.pashmak.com.pashmak.ui.main.transaction.TransactionListViewModel"/>
+        <variable
+            name="adapter"
+            type="app.pashmak.com.pashmak.ui.base.adapter.BaseAdapter"/>
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/ToolbarStyle"
+                android:background="@color/Dark_tangerine">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:fontFamily="@font/sans_bold"
+                    android:textColor="@color/White"
+                    android:text="@string/tab_transactions"
+                    android:textSize="@dimen/text_size_large" />
+
+            </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lst_checkin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:adapter="@{adapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        <!--isTransparent="@{viewModel.pageLoading}"-->
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/frame_shimmer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0"
+            app:shimmer_duration="800"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <include layout="@layout/template_checkin"/>
+                <include layout="@layout/template_checkin"/>
+                <include layout="@layout/template_checkin"/>
+                <include layout="@layout/template_checkin"/>
+                <include layout="@layout/template_checkin"/>
+                <include layout="@layout/template_checkin"/>
+                <include layout="@layout/template_checkin"/>
+                <include layout="@layout/template_checkin"/>
+                <include layout="@layout/template_checkin"/>
+                <include layout="@layout/template_checkin"/>
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

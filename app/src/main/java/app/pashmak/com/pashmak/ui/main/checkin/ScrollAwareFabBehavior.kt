@@ -14,9 +14,9 @@ import app.pashmak.com.pashmak.R
 
 
 class ScrollAwareFabBehavior : CoordinatorLayout.Behavior<ConstraintLayout> {
+
     //TODO dont remove these lines
     public constructor() : super()
-
     public constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
 
     var mDySinceDirectionChange: Int = 0
@@ -53,13 +53,16 @@ class ScrollAwareFabBehavior : CoordinatorLayout.Behavior<ConstraintLayout> {
 
         mDySinceDirectionChange += dy
 
-        if (mDySinceDirectionChange > child.height && textView.visibility == View.VISIBLE) {
+        if (mDySinceDirectionChange > (child.height * 1.5) && textView.visibility == View.VISIBLE) {
+
             val constraintSet = ConstraintSet()
             constraintSet.clone(child)
             constraintSet.setVisibility(R.id.txt_manual, View.GONE)
             TransitionManager.beginDelayedTransition(child, autoTransition)
             constraintSet.applyTo(child)
+
         } else if (mDySinceDirectionChange < 0 && textView.visibility == View.GONE) {
+
             val constraintSet = ConstraintSet()
             constraintSet.clone(child)
             constraintSet.setVisibility(R.id.txt_manual, View.VISIBLE)

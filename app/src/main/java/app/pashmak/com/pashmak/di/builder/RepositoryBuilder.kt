@@ -9,6 +9,8 @@ import app.pashmak.com.pashmak.data.repository.login.LoginRepository
 import app.pashmak.com.pashmak.data.repository.login.LoginRepositoryImpl
 import app.pashmak.com.pashmak.data.repository.polling.PollingDataRepository
 import app.pashmak.com.pashmak.data.repository.polling.PollingDataRepositoryImpl
+import app.pashmak.com.pashmak.data.repository.transaction.TransactionDataRepository
+import app.pashmak.com.pashmak.data.repository.transaction.TransactionDataRepositoryImpl
 import dagger.Binds
 import dagger.Module
 
@@ -26,4 +28,7 @@ interface RepositoryBuilder {
 
     @Binds
     fun bindCheckInRepository(checkInRepositoryImpl: CheckInRepositoryImpl): CheckInRepository
+
+    @Binds
+    fun bindTransactionRepository(transactionRepository: TransactionDataRepositoryImpl): TransactionDataRepository
 }

@@ -18,5 +18,5 @@ class MainViewModel
 
     fun openCheckIn() = activityAction{ mainTabViewState.select(MainTabEnum.CHECKIN, it)}
 
-    fun openTransactions() {}
+    fun openTransactions() = activityAction{ mainTabViewState.select(MainTabEnum.TRANSACTIONS, it)}
 }
