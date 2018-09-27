@@ -30,6 +30,7 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>(), HasSupp
     override fun onViewInitialized(binding: ActivityMainBinding) {
         super.onViewInitialized(binding)
         binding.viewModel = viewModel
+        binding.mainTabViewState = viewModel.mainTabViewState
 
         viewModel.openHome()
     }

@@ -1,5 +1,6 @@
 package app.pashmak.com.pashmak.util
 
+import android.content.res.ColorStateList
 import android.graphics.drawable.ClipDrawable
 import android.graphics.drawable.Drawable
 import android.text.Editable
@@ -13,6 +14,7 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
+import androidx.core.widget.ImageViewCompat
 import androidx.databinding.BindingAdapter
 import androidx.lifecycle.MutableLiveData
 import app.pashmak.com.pashmak.app.GlideApp
@@ -102,5 +104,11 @@ object BindingAdapters {
     @BindingAdapter("textColorRes")
     fun setTextColorRes(view: TextView, colorRes: Int) {
         view.setTextColor(ContextCompat.getColor(view.context, colorRes))
+    }
+
+    @JvmStatic
+    @BindingAdapter("tintColorRes")
+    fun setImageTint(view: ImageView, colorRes: Int) {
+        ImageViewCompat.setImageTintList(view, ColorStateList.valueOf(ContextCompat.getColor(view.context, colorRes)))
     }
 }
