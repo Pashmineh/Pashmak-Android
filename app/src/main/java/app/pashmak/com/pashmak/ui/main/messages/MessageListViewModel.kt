@@ -1,5 +1,6 @@
 package app.pashmak.com.pashmak.ui.main.messages
 
+import androidx.lifecycle.MutableLiveData
 import app.pashmak.com.pashmak.data.model.message.MessageModel
 import app.pashmak.com.pashmak.data.model.response.APIResponse
 import app.pashmak.com.pashmak.data.model.response.ErrorResponse
@@ -15,6 +16,7 @@ class MessageListViewModel
 ): BaseViewModel()
 {
     val isLoading: NonNullLiveData<Boolean> = NonNullLiveData(false)
+    val messageListLiveData: MutableLiveData<List<MessageModel>> = MutableLiveData()
 
     fun getMessageList(){
         isLoading.value = true
@@ -24,7 +26,9 @@ class MessageListViewModel
     fun onMessageListResponse(response: APIResponse<List<MessageModel>>){
         isLoading.value = false
         when(response){
-            is SuccessResponse -> {}
+            is SuccessResponse -> {
+                messageListLiveData.value = response.value
+            }
             is ErrorResponse -> {}
         }
     }

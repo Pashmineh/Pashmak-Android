@@ -105,7 +105,8 @@ class CheckInViewModel
         pageLoading.value = false
         when(response){
             is SuccessResponse -> {
-                checkInListLiveDatas.value = response.value
+                val sortedList = response.value.sortedBy { it.checkInTimeValue }
+                checkInListLiveDatas.value = sortedList
             }
             is ErrorResponse -> {}
         }

@@ -36,4 +36,6 @@
     <string name="payment_caption">پرداخت بدهی</string>
     <string name="debt_payment_format">%s ریال</string>
 
+    <string name="date_time_format">%1s | %2s</string>
+
 </resources>

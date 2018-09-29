@@ -12,7 +12,7 @@ class MainViewModel
 
     fun openHome() = activityAction{ mainTabViewState.select(MainTabEnum.HOME, it)}
 
-    fun openMessages() {}
+    fun openMessages() = activityAction{ mainTabViewState.select(MainTabEnum.MESSAGES, it) }
 
     fun openPolling() = activityAction{ mainTabViewState.select(MainTabEnum.POLLING, it)}
 
