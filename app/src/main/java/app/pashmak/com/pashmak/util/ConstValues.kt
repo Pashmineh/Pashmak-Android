@@ -1,6 +1,6 @@
 package app.pashmak.com.pashmak.util
 
-const val BASE_URL = "http://178.128.195.55:8080"
+const val BASE_URL = "http://pashmak.kian.digital:8080"
 
 const val BEACON_UUID = "00001803-494c-4f47-4943-544543480000"
 const val BEACON_ADDRESS = "FC:7F:B6:A8:91:95"
