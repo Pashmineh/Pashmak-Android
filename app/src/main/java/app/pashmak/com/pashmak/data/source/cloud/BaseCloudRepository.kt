@@ -7,6 +7,8 @@ import app.pashmak.com.pashmak.data.model.login.LoginRequest
 import app.pashmak.com.pashmak.data.model.login.LoginResponse
 import app.pashmak.com.pashmak.data.model.polling.PollModel
 import app.pashmak.com.pashmak.data.model.polling.VoteModel
+import app.pashmak.com.pashmak.data.model.transaction.DebtModel
+import app.pashmak.com.pashmak.data.model.transaction.PaymentModel
 import app.pashmak.com.pashmak.data.model.transaction.TransactionModel
 import io.reactivex.Flowable
 
@@ -31,7 +33,7 @@ interface BaseCloudRepository {
 
     fun removeVote(voteModel: VoteModel): Flowable<List<PollModel>>
 
-    fun getDebtList(): Flowable<List<TransactionModel>>
+    fun getDebtList(): Flowable<List<DebtModel>>
 
-    fun getPaymentList(): Flowable<List<TransactionModel>>
+    fun getPaymentList(): Flowable<List<PaymentModel>>
 }

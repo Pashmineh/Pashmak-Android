@@ -44,9 +44,9 @@
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
             android:adapter="@{adapter}"
+            isTransparent="@{viewModel.isLoading}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
-        <!--isTransparent="@{viewModel.pageLoading}"-->
 
         <com.facebook.shimmer.ShimmerFrameLayout
             android:id="@+id/frame_shimmer"

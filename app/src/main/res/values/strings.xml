@@ -30,4 +30,10 @@
     <string name="vote_merge">%d رای</string>
     <string name="person_merge">%d نفر</string>
 
+    <string name="debt_takhir">تاخیر در ورود</string>
+    <string name="debt_shirini">شیرینی</string>
+    <string name="debt_jalase">تاخیر در جلسه</string>
+    <string name="payment_caption">پرداخت بدهی</string>
+    <string name="debt_payment_format">%s ریال</string>
+
 </resources>

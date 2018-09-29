@@ -83,7 +83,7 @@ object BindingAdapters {
 
     @JvmStatic
     @BindingAdapter("isSelectedView")
-    fun changeViewSelectionState(view: ViewGroup, isSelected: Boolean) {
+    fun changeViewSelectionState(view: View, isSelected: Boolean) {
         view.isSelected = isSelected
     }
 
