@@ -25,7 +25,10 @@ class MainTabViewState
                 mNavigator.openHomeFragment(fragmentActivity)
                 homeTintRes.value = R.color.Dark_tangerine
             }
-            MainTabEnum.MESSAGES -> {}
+            MainTabEnum.MESSAGES -> {
+                mNavigator.openMessageListFragment(fragmentActivity)
+                messagesTintRes.value = R.color.Dark_tangerine
+            }
             MainTabEnum.POLLING -> {
                 mNavigator.openPollingFragment(fragmentActivity)
                 pollingTintRes.value = R.color.Dark_tangerine

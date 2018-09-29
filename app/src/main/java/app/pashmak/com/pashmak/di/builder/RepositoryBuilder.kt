@@ -7,6 +7,8 @@ import app.pashmak.com.pashmak.data.repository.home.HomeDataRepository
 import app.pashmak.com.pashmak.data.repository.home.HomeDataRepositoryImpl
 import app.pashmak.com.pashmak.data.repository.login.LoginRepository
 import app.pashmak.com.pashmak.data.repository.login.LoginRepositoryImpl
+import app.pashmak.com.pashmak.data.repository.message.MessageDataRepository
+import app.pashmak.com.pashmak.data.repository.message.MessageDataRepositoryImpl
 import app.pashmak.com.pashmak.data.repository.polling.PollingDataRepository
 import app.pashmak.com.pashmak.data.repository.polling.PollingDataRepositoryImpl
 import app.pashmak.com.pashmak.data.repository.transaction.TransactionDataRepository
@@ -31,4 +33,7 @@ interface RepositoryBuilder {
 
     @Binds
     fun bindTransactionRepository(transactionRepository: TransactionDataRepositoryImpl): TransactionDataRepository
+
+    @Binds
+    fun bindMessageRepository(messageDataRepositoryImpl: MessageDataRepositoryImpl): MessageDataRepository
 }

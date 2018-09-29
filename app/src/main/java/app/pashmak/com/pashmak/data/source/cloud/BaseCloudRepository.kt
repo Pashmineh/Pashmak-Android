@@ -5,6 +5,7 @@ import app.pashmak.com.pashmak.data.model.checkin.CheckInResponse
 import app.pashmak.com.pashmak.data.model.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.login.LoginRequest
 import app.pashmak.com.pashmak.data.model.login.LoginResponse
+import app.pashmak.com.pashmak.data.model.message.MessageModel
 import app.pashmak.com.pashmak.data.model.polling.PollModel
 import app.pashmak.com.pashmak.data.model.polling.VoteModel
 import app.pashmak.com.pashmak.data.model.transaction.DebtModel
@@ -36,4 +37,6 @@ interface BaseCloudRepository {
     fun getDebtList(): Flowable<List<DebtModel>>
 
     fun getPaymentList(): Flowable<List<PaymentModel>>
+
+    fun getMessageList(): Flowable<List<MessageModel>>
 }

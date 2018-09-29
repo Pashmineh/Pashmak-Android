@@ -5,6 +5,7 @@ import app.pashmak.com.pashmak.data.model.checkin.CheckInResponse
 import app.pashmak.com.pashmak.data.model.checkin.CheckInType
 import app.pashmak.com.pashmak.data.model.login.LoginRequest
 import app.pashmak.com.pashmak.data.model.login.LoginResponse
+import app.pashmak.com.pashmak.data.model.message.MessageModel
 import app.pashmak.com.pashmak.data.model.polling.VoteModel
 import app.pashmak.com.pashmak.data.model.transaction.DebtModel
 import app.pashmak.com.pashmak.data.model.transaction.PaymentModel
@@ -39,4 +40,6 @@ class CloudRepository(private val apIs: APIs, private val apIsWithToken: APIsWit
     override fun getDebtList(): Flowable<List<DebtModel>> = apIsWithToken.getDebtList()
 
     override fun getPaymentList(): Flowable<List<PaymentModel>> = apIsWithToken.getPaymentList()
+
+    override fun getMessageList(): Flowable<List<MessageModel>> = apIsWithToken.getMessageList()
 }

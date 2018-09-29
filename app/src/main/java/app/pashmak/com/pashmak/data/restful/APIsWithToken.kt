@@ -3,11 +3,11 @@ package app.pashmak.com.pashmak.data.restful
 import app.pashmak.com.pashmak.data.model.home.HomeData
 import app.pashmak.com.pashmak.data.model.checkin.CheckInResponse
 import app.pashmak.com.pashmak.data.model.checkin.CheckInType
+import app.pashmak.com.pashmak.data.model.message.MessageModel
 import app.pashmak.com.pashmak.data.model.polling.PollModel
 import app.pashmak.com.pashmak.data.model.polling.VoteModel
 import app.pashmak.com.pashmak.data.model.transaction.DebtModel
 import app.pashmak.com.pashmak.data.model.transaction.PaymentModel
-import app.pashmak.com.pashmak.data.model.transaction.TransactionModel
 import io.reactivex.Flowable
 import retrofit2.http.*
 
@@ -38,4 +38,7 @@ interface APIsWithToken{
 
     @GET("/api/payments")
     fun getPaymentList(): Flowable<List<PaymentModel>>
+
+    @GET("/api/messages")
+    fun getMessageList(): Flowable<List<MessageModel>>
 }
